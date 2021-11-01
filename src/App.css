@@ -1,3 +1,6 @@
+body{
+  background-color: #6c757d
+}
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
 
 .homepage {
@@ -153,4 +156,14 @@ body {
 }
 *, ::after, ::before {
   box-sizing: border-box;
+}
+
+.b1-color{
+  background-color: #198754;
+  color: white;
+}
+
+.b2-color{
+  background-color: white;
+  color: #198754;
 }

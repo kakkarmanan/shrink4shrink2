@@ -2,15 +2,15 @@ import React from "react";
 import {Link} from "react-router-dom";
 import './dashboard.css';
 
-function dashboard(){
-    return(
+class dashboard extends React.Component{
+    render(){return(
         <div>
 <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary mb-3">
     <div class="flex-row d-flex">
         <button type="button" class="navbar-toggler mr-2 " data-toggle="offcanvas" title="Toggle responsive left sidebar">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#" title="Free Bootstrap 4 Admin Template">Admin Template</a>
+        <a class="navbar-brand" href="/dashboard" title="S4S">S4S</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@ function dashboard(){
     <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0" id="sidebar" role="navigation">
             <ul class="nav flex-column sticky-top pl-0 pt-5 mt-3">
-                <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports▾</a>
                     <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
@@ -46,21 +46,18 @@ function dashboard(){
                        <li class="nav-item"><a class="nav-link" href="">Report 2</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Export</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Snippets</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Flexbox</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Layouts</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Templates</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Themes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Upcoming Sessions</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Previous Sessions</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Prescription</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Routines</a></li>
             </ul>
         </div>
 
         <div class="col main pt-5 mt-3">
             <h1 class="display-4 d-none d-sm-block">
-            Bootstrap 4 Dashboard
+            UserName
             </h1>
-            <p class="lead d-none d-sm-block">Plus off-canvas sidebar, based on Bootstrap v4</p>
+            <p class="lead d-none d-sm-block">Dashboard</p>
 
             <div class="alert alert-warning fade collapse" role="alert" id="myAlert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -76,18 +73,18 @@ function dashboard(){
                             <div class="rotate">
                                 <i class="fa fa-user fa-4x"></i>
                             </div>
-                            <h6 class="text-uppercase">Users</h6>
+                            <h6 class="text-uppercase">Sessions</h6>
                             <h1 class="display-4">134</h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 py-2">
+                {/* <div class="col-xl-3 col-sm-6 py-2">
                     <div class="card text-white bg-danger h-100">
                         <div class="card-body bg-danger">
                             <div class="rotate">
                                 <i class="fa fa-list fa-4x"></i>
                             </div>
-                            <h6 class="text-uppercase">Posts</h6>
+                            <h6 class="text-uppercase"></h6>
                             <h1 class="display-4">87</h1>
                         </div>
                     </div>
@@ -113,11 +110,11 @@ function dashboard(){
                             <h1 class="display-4">36</h1>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
-            <hr />
-            <div class="row placeholders mb-3">
+            {/* <hr /> */}
+            {/* <div class="row placeholders mb-3">
                 <div class="col-6 col-sm-3 placeholder text-center">
                     <img src="//placehold.it/200/dddddd/fff?text=1" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail" />
                     <h4>Responsive</h4>
@@ -138,15 +135,11 @@ function dashboard(){
                     <h4>Framework</h4>
                     <span class="text-muted">CSS and JavaScript</span>
                 </div>
-            </div>
+            </div> */}
 
             <a id="features"></a>
             <hr />
-            <p class="lead mt-5">
-                Are you ready for Bootstap 4? It's the 4th generation of this popular responsive framework. Bootstrap 4 will include some interesting 
-                new features such as flexbox, 5 grid sizes (now including xl), cards, `em` sizing, CSS normalization (reboot) and larger font
-                sizes.
-            </p>
+            <h1>Upcoming Sessions</h1>
             <div class="row my-4">
                 <div class="col-lg-3 col-md-4">
                     <div class="card">
@@ -249,7 +242,7 @@ function dashboard(){
 
             <a id="more"></a>
             <hr />
-            <h2 class="sub-header mt-5">Use card decks for equal height rows of cards</h2>
+            <h2 class="sub-header mt-5">Previous Sessions</h2>
             <div class="mb-3">
                 <div class="card-deck">
                     <div class="card card-inverse card-success text-center">
@@ -289,7 +282,7 @@ function dashboard(){
 
             <a id="flexbox"></a>
             <hr />
-            <h2 class="mt-5">Masonry-style grid columns</h2>
+            <h2 class="mt-5">Previus Sessions</h2>
             <h6>with Bootstrap 4 flexbox</h6>
 
             <div class="card-columns mb-3">
@@ -374,7 +367,7 @@ function dashboard(){
 
             <a id="layouts"></a>
             <hr />
-            <h2 class="sub-header mt-5">Interesting layouts and elements</h2>
+            <h2 class="sub-header mt-5">Routines</h2>
             <div class="row mb-3">
                 <div class="col-lg-6">
 
@@ -547,7 +540,7 @@ function dashboard(){
     </div>
 </div>
 </div>
-    );
+    );}
 }
 
 export default dashboard;

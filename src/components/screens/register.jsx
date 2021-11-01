@@ -1,7 +1,22 @@
 import React from "react";
 
-function RegisterPage(){
-        return (
+class RegisterPage extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      firstName:"",
+      lastName:"",
+      address:"",
+      gender:"",
+      state:"",
+      city:"",
+      dob:"",
+      pincode:"",
+      email:"",
+    }
+  }
+        render(){
+          return  (
             <div>
                 <section class="h-100 bg-dark">
   <div class="container py-5 h-100">
@@ -12,7 +27,7 @@ function RegisterPage(){
             <div class="col-xl-6 d-none d-xl-block">
               <img
                 src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
-                alt="Sample photo"
+                alt="img"
                 class="img-fluid"
                 style={{borderTopLeftRadius: ".25rem" , borderBottomLeftRadius: ".25rem"}}
               />
@@ -25,28 +40,13 @@ function RegisterPage(){
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" id="form3Example1m" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1m">First name</label>
+                      <label class="form-label" for="form3Example1m">First name*</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" id="form3Example1n" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n">Last name</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1m1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1m1">Mother's name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1n1" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1n1">Father's name</label>
+                      <label class="form-label" for="form3Example1n">Last name*</label>
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ function RegisterPage(){
 
                 <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
 
-                  <h6 class="mb-0 me-4">Gender: </h6>
+                  <h6 class="mb-0 me-4">Gender*: </h6>
 
                   <div class="form-check form-check-inline mb-0 me-4">
                     <input
@@ -90,7 +90,7 @@ function RegisterPage(){
                       id="otherGender"
                       value="option3"
                     />
-                    <label class="form-check-label" for="otherGender">Other</label>
+                    <label class="form-check-label" for="otherGender">Preferably not say</label>
                   </div>
 
                 </div>
@@ -119,8 +119,8 @@ function RegisterPage(){
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example9" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example9">DOB</label>
+                  <input type="date" id="form3Example9" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example9">DOB*</label>
                 </div>
 
                 <div class="form-outline mb-4">
@@ -129,18 +129,23 @@ function RegisterPage(){
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example99" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example99">Course</label>
+                  <input type="email" id="form3Example97" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example97">Email ID*</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example97" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example97">Email ID</label>
+                  <input type="password" id="form3Example97" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example97">Password*</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example97" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example97">Confirm Password*</label>
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="button" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  <button type="button" class="btn btn-light btn-lg b2-color">Reset all</button>
+                  <button type="button" class="btn btn-warning btn-lg ms-2 b1-color">Register</button>
                 </div>
 
               </div>
@@ -152,7 +157,7 @@ function RegisterPage(){
   </div>
 </section>
             </div>
-        );
+        );}
 };
 
 export default RegisterPage;
