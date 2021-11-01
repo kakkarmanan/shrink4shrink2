@@ -5,6 +5,7 @@ import './App.css';
 import RegisterPage from './components/screens/register';
 import LoginPage from './components/screens/login';
 import LandingPage from './components/screens/landing';
+import dashboard from './components/screens/dashboard';
 import {} from 'react-bootstrap'
 function App() {
   return (
@@ -18,8 +19,13 @@ function App() {
     <section>
       <Route path="/register" exact component = {RegisterPage}/>
     </section>
+    <section>
+      <Route path="/dashboard" exact component={dashboard}/>
+    </section>
   </div>
   );
 }
 
 export default App;
+
+//PrivateRoute for dashboard when database is integrated.
