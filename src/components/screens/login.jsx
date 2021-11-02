@@ -4,11 +4,50 @@ class LoginPage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      email:"",
-      password:"",
+      data: {
+        email: '',
+        password: ''
+      }
     }
+  };
+  onChange = e => this.setState({data: {...this.state.data, [e.target.name]: e.target.value}});
+
+  onReset=(eve)=>{
+    this.setState({data: {...this.state.data, email:"",password:""}});
   }
-        render(){return (
+
+  onSubmitSignIn=(event)=>{
+    console.log(this.state.data);
+    event.preventDefault();
+  //  fetch('https://botalysis.herokuapp.com/api/signin',{
+  //      method:'post',
+  //      headers:{'Content-type':'application/json'},
+  //      body:JSON.stringify({
+  //          email:this.state.data.email,
+  //          password:this.state.data.password,
+  //          admin:this.state.data.admin,
+  //      })
+  //  })
+  //      .then(response=>response.json())
+  //      .then(user=>{
+  //        console.log(user.isvalid);
+  //          if(user.email  && user.isvalid===false){
+  //            localStorage.setItem("user", JSON.stringify(user));
+  //            this.props.history.push("/employeePage");
+  //          }
+  //          else if(user.email  && user.isvalid===true){
+  //            localStorage.setItem("user", JSON.stringify(user));
+  //            this.props.history.push("/adminPage");
+  //          }
+  //          else{
+  //              alert('No matching Credentials!');
+  //          }
+  //      })
+ }
+        render()
+        {
+          const {data} = this.state;
+          return (
             
           <div>
             <section class="h-100 bg-dark">
@@ -32,20 +71,20 @@ class LoginPage extends React.Component{
                         <div class="row">
                           <div class="form-outline mb-4">
                             <div class="form-outline">
-                              <input type="email" id="form3Example1m" class="form-control form-control-lg" />
+                              <input type="email" id="form3Example1m" class="form-control form-control-lg" name="email" value={data.email} onChange = {this.onChange} required/>
                               <label class="form-label" for="form3Example1m">Email</label>
                             </div>
                           </div>
                         </div> 
 
                         <div class="form-outline mb-4">
-                          <input type="password" id="form3Example97" class="form-control form-control-lg" />
+                          <input type="password" id="form3Example97" class="form-control form-control-lg" name="password" value={data.password} onChange = {this.onChange} required/>
                           <label class="form-label" for="form3Example97">Password</label>
                         </div> 
 
                         <div class="d-flex justify-content-end pt-3">
-                          <button type="button" class="btn btn-light btn-lg b2-color">Reset all</button>
-                          <button type="button" class="btn btn-warning btn-lg ms-2 b1-color">Login</button>
+                          <button type="button" class="btn btn-light btn-lg b2-color" onClick={this.onReset} >Reset all</button>
+                          <button type="button" class="btn btn-warning btn-lg ms-2 b1-color" onClick = {this.onSubmitSignIn} >Login</button>
                         </div>
 
                       </div>
