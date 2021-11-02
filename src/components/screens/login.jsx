@@ -6,7 +6,8 @@ class LoginPage extends React.Component{
     this.state = {
       data: {
         email: '',
-        password: ''
+        password: '',
+        doctor:"false"
       }
     }
   };
@@ -19,30 +20,34 @@ class LoginPage extends React.Component{
   onSubmitSignIn=(event)=>{
     console.log(this.state.data);
     event.preventDefault();
-  //  fetch('https://botalysis.herokuapp.com/api/signin',{
-  //      method:'post',
-  //      headers:{'Content-type':'application/json'},
-  //      body:JSON.stringify({
-  //          email:this.state.data.email,
-  //          password:this.state.data.password,
-  //          admin:this.state.data.admin,
-  //      })
-  //  })
-  //      .then(response=>response.json())
-  //      .then(user=>{
-  //        console.log(user.isvalid);
-  //          if(user.email  && user.isvalid===false){
-  //            localStorage.setItem("user", JSON.stringify(user));
-  //            this.props.history.push("/employeePage");
-  //          }
-  //          else if(user.email  && user.isvalid===true){
-  //            localStorage.setItem("user", JSON.stringify(user));
-  //            this.props.history.push("/adminPage");
-  //          }
-  //          else{
-  //              alert('No matching Credentials!');
-  //          }
-  //      })
+   fetch('http://localhost:3001/api/signin',{
+       method:'post',
+       headers:{'Content-type':'application/json'},
+       body:JSON.stringify({
+           email:this.state.data.email,
+           password:this.state.data.password,
+           doctor:this.state.data.doctor,
+       })
+   })
+       .then(response=>response.json())
+       .then(user=>{
+         console.log(user.isvalid);
+         if(user.email){
+          localStorage.setItem("user", JSON.stringify(user));
+          this.props.history.push("/dashboard");
+         }
+          //  if(user.email  && user.isvalid===false){
+          //    localStorage.setItem("user", JSON.stringify(user));
+          //    this.props.history.push("/dashboard");
+          //  }
+          //  else if(user.email  && user.isvalid===true){
+          //    localStorage.setItem("user", JSON.stringify(user));
+          //    this.props.history.push("/adminPage");
+          //  }
+          //  else{
+          //      alert('No matching Credentials!');
+          //  }
+       })
  }
         render()
         {

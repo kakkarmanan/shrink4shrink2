@@ -41,41 +41,48 @@ class RegisterPage extends React.Component{
   onSubmitSignup = (event) => {
     event.preventDefault();
     console.log(this.state.data);
-//    if (this.state.data.password.length >= 8 && this.state.data.cnfrmpassword.length >= 8 && this.state.data.phone.length===13) {
-//      //eslint-disable-next-line
-//      if((this.state.data.password === this.state.data.cnfrmpassword )&& (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.data.email,))){
-//        fetch('https://botalysis.herokuapp.com/api/signup', {
-//        method: 'post',
-//        headers: { 'Content-type': 'application/json' },
-//        body: JSON.stringify({
-//          name: this.state.data.username,
-//          email: this.state.data.email,
-//          phone: this.state.data.phone,
-//          branch: this.state.data.branch,
-//          password: this.state.data.password,
-//          picture: "https://i.dlpng.com/static/png/5066008-circled-user-icon-user-profile-icon-png-png-image-transparent-profile-icon-png-820_860_preview.png"
-//        })
-//      })
-//        .then(response => response.json())
-//        .then(user => {
-//          console.log(user);
-//          if (user.email) {
-//            // this.props.loadUser(user);
-//            console.log(this.props);
-//            // this.props.onRouteChange('home');
-//            this.props.history.push("/welcome");
-//            this.setState({ loading: true });
-//            //localStorage.removeItem("user");
-//          }
-//        })
-//      }
-//      else{
-//        this.setState({ loading: false });
-//      }
-//  }
-//  else {
-//    this.setState({ loading: false });
-//  }
+   if (this.state.data.password.length >= 8 && this.state.data.cnfrmpassword.length >= 8 && this.state.data.phone.length===13) {
+     if((this.state.data.password === this.state.data.cnfrmpassword )&& (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.data.email,))){
+
+       fetch('http://localhost:3001/api/signup', {
+       method: 'post',
+       headers: { 'Content-type': 'application/json' },
+       body: JSON.stringify({
+         firstname: this.state.data.firstName,
+         lastname: this.state.data.lastName,
+         email: this.state.data.email,
+         phone: this.state.data.phone,
+         address: this.state.data.address,
+         city: this.state.data.city,
+         state: this.state.data.state,
+         dob:this.state.data.dob,
+         gender: this.state.data.gender,
+         pincode: this.state.data.pincode,
+         password: this.state.data.password,
+         picture: "https://i.dlpng.com/static/png/5066008-circled-user-icon-user-profile-icon-png-png-image-transparent-profile-icon-png-820_860_preview.png"
+       })
+     })
+       .then(response => response.json())
+       .then(user => {
+         console.log(user);
+         if (user.email) {
+           // this.props.loadUser(user);
+           console.log(this.props);
+           // this.props.onRouteChange('home');
+           //this.props.history.push("/welcome");
+           //localStorage.removeItem("user");
+           alert("you have successfully registered continue to login!!");
+           this.props.history.push("/login");
+         }
+       })
+     }
+     else{
+       alert("Check both passwords or Email format");
+     }
+ }
+ else {
+   alert("Check password length or contact number format");
+ }
  }
         render(){
           const {data} = this.state;
@@ -116,7 +123,7 @@ class RegisterPage extends React.Component{
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" id="form3Example1m" class="form-control form-control-lg" name="phone" value={data.phone} onChange = {this.onChange} required/>
-                      <label class="form-label" for="form3Example1m">Contact Number*</label>
+                      <label class="form-label" for="form3Example1m">Contact Number*(in "+91" format)</label>
                     </div>
                   </div>
 
