@@ -3,6 +3,7 @@ import {Route} from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import RegisterPage from './components/screens/register';
+import RegisterPageDoc from './components/screens/registerdoc';
 import LoginPage from './components/screens/login';
 import LandingPage from './components/screens/landing';
 import dashboard from './components/screens/dashboard';
@@ -20,6 +21,9 @@ function App() {
     </section>
     <section>
       <Route path="/register" exact component = {RegisterPage}/>
+    </section>
+    <section>
+      <Route path="/registerdoc" exact component = {RegisterPageDoc}/>
     </section>
     <section>
       <Route path="/dashboard" exact component={dashboard}/>
