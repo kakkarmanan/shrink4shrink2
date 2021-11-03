@@ -6,6 +6,7 @@ import RegisterPage from './components/screens/register';
 import LoginPage from './components/screens/login';
 import LandingPage from './components/screens/landing';
 import dashboard from './components/screens/dashboard';
+import dashboarddoc from './components/screens/dashboarddoc';
 import FindDoctor from './components/screens/find_doctor';
 import {} from 'react-bootstrap'
 function App() {
@@ -22,6 +23,9 @@ function App() {
     </section>
     <section>
       <Route path="/dashboard" exact component={dashboard}/>
+    </section>
+    <section>
+      <Route path="/dashboarddoc" exact component={dashboarddoc}/>
     </section>
     <section>
       <Route path="/find-doctor" exanct component={FindDoctor}/>

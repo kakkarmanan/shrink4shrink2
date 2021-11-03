@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import './dashboard.css';
 
-class dashboard extends React.Component{
+class dashboarddoc extends React.Component{
     handleSignOut(){
         localStorage.removeItem("user");
     }
@@ -12,7 +12,8 @@ class dashboard extends React.Component{
                         <div class="container-fluid">
                             <a class="navbar-brand" href="/">s4s</a>
                             <form class="d-flex">
-                                <Link to='/' className ="button btn btn-outline-success me-2" onClick={this.handleSignOut}>Logout</Link>
+                                <Link className ="button btn btn-outline-success me-2" onClick={this.handleSignOut} to="/">Logout</Link>
+                                
                             </form>
                         </div>
                     </nav>
@@ -137,4 +138,4 @@ class dashboard extends React.Component{
     );}
 }
 
-export default dashboard;
+export default dashboarddoc;

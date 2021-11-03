@@ -1,4 +1,5 @@
 import React from "react";
+import "./dashboard.css";
 
 class LoginPage extends React.Component{
   constructor(props){
@@ -16,7 +17,15 @@ class LoginPage extends React.Component{
   onReset=(eve)=>{
     this.setState({data: {...this.state.data, email:"",password:""}});
   }
-
+  onChangeToggle=e=>{
+    if(e.target.value==='false'){
+      this.setState({data:{...this.state.data,[e.target.name]:'true'}});
+    }
+    else{
+      this.setState({data:{...this.state.data,[e.target.name]:'false'}});
+    }
+    console.log(this.state.data.doctor);
+   }
   onSubmitSignIn=(event)=>{
     console.log(this.state.data);
     event.preventDefault();
@@ -31,22 +40,18 @@ class LoginPage extends React.Component{
    })
        .then(response=>response.json())
        .then(user=>{
-         console.log(user.isvalid);
-         if(user.email){
-          localStorage.setItem("user", JSON.stringify(user));
-          this.props.history.push("/dashboard");
-         }
-          //  if(user.email  && user.isvalid===false){
-          //    localStorage.setItem("user", JSON.stringify(user));
-          //    this.props.history.push("/dashboard");
-          //  }
-          //  else if(user.email  && user.isvalid===true){
-          //    localStorage.setItem("user", JSON.stringify(user));
-          //    this.props.history.push("/adminPage");
-          //  }
-          //  else{
-          //      alert('No matching Credentials!');
-          //  }
+         console.log(user.doctor);
+           if(user.email  && user.doctor===false){
+             localStorage.setItem("user", JSON.stringify(user));
+             this.props.history.push("/dashboard");
+           }
+           else if(user.email  && user.doctor===true){
+             localStorage.setItem("user", JSON.stringify(user));
+             this.props.history.push("/dashboarddoc");
+           }
+           else{
+               alert('No matching Credentials!');
+           }
        })
  }
         render()
@@ -85,8 +90,11 @@ class LoginPage extends React.Component{
                         <div class="form-outline mb-4">
                           <input type="password" id="form3Example97" class="form-control form-control-lg" name="password" value={data.password} onChange = {this.onChange} required/>
                           <label class="form-label" for="form3Example97">Password</label>
-                        </div> 
-
+                        </div>
+                        <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="doctor" value={data.doctor} onChange = {this.onChangeToggle} />
+  <label class="form-check-label" for="flexSwitchCheckDefault">Login as Doctor</label>
+</div>
                         <div class="d-flex justify-content-end pt-3">
                           <button type="button" class="btn btn-light btn-lg b2-color" onClick={this.onReset} >Reset all</button>
                           <button type="button" class="btn btn-warning btn-lg ms-2 b1-color" onClick = {this.onSubmitSignIn} >Login</button>
