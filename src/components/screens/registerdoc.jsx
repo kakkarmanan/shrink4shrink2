@@ -125,6 +125,9 @@ class RegisterPageDoc extends React.Component{
            alert("you have successfully registered continue to login!!");
            this.props.history.push("/login");
          }
+         else{
+           alert(user);
+         }
        })
      }
      else{
