@@ -7,9 +7,15 @@ class form extends React.Component{
     handleSignOut(){
         localStorage.removeItem("user");
     }
+    onsub=(eve)=>{
+        console.log("submit")
+        this.props.history.push("/dashboard");
+
+
+      }
     render(){return(
         <div style={{height:'100%'}}>
-     <Widget id="j2w06bUz" style={{ width: '100%',height:'100vh' }} className="my-form" />
+     <Widget id="j2w06bUz" style={{ width: '100%',height:'100vh' }} className="my-form" onSubmit={this.onsub}/>
      </div>
    );}
 }
