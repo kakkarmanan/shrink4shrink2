@@ -1,5 +1,5 @@
 import React from "react";
-import firebase from '../../database.js';
+import firebase from '../../firebase';
 
 var storageRef = firebase.storage().ref();
 const toBlob = (file) => {
