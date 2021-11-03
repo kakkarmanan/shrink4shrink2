@@ -29,7 +29,9 @@ class RegisterPageDoc extends React.Component{
       cnfrmpassword:"",
       licenseno:"",
       yoe:"",
-      selectedFile: null
+      selectedFile: null,
+      doctor:"true",
+      docurl:""
     }
   }
   };
@@ -60,7 +62,7 @@ class RegisterPageDoc extends React.Component{
         await mountainsRef.put(blob, metadata);
         const res = await mountainsRef.getDownloadURL();
         console.log(res);
-        console.log(this.state.u);
+        this.setState({data: {...this.state.data, docurl: res}});
         // setTimeout(()=>{},5000);
       } 
       catch (err) {
@@ -95,6 +97,7 @@ class RegisterPageDoc extends React.Component{
        body: JSON.stringify({
          firstname: this.state.data.firstName,
          lastname: this.state.data.lastName,
+         doctor: this.state.data.doctor,
          email: this.state.data.email,
          phone: this.state.data.phone,
          address: this.state.data.address,
@@ -104,6 +107,9 @@ class RegisterPageDoc extends React.Component{
          gender: this.state.data.gender,
          pincode: this.state.data.pincode,
          password: this.state.data.password,
+         liscence: this.state.data.licenseno,
+         yearofexperience: Number(this.state.data.yoe),
+         liscence_doc: this.state.data.docurl,
          picture: "https://i.dlpng.com/static/png/5066008-circled-user-icon-user-profile-icon-png-png-image-transparent-profile-icon-png-820_860_preview.png"
        })
      })

@@ -16,7 +16,8 @@ class RegisterPage extends React.Component{
       pincode:"",
       email:"",
       password:"",
-      cnfrmpassword:""
+      cnfrmpassword:"",
+      doctor:"false"
     }
   }
   };
@@ -49,6 +50,7 @@ class RegisterPage extends React.Component{
        headers: { 'Content-type': 'application/json' },
        body: JSON.stringify({
          firstname: this.state.data.firstName,
+         doctor: this.state.data.doctor,
          lastname: this.state.data.lastName,
          email: this.state.data.email,
          phone: this.state.data.phone,
