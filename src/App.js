@@ -9,6 +9,8 @@ import LandingPage from './components/screens/landing';
 import dashboard from './components/screens/dashboard';
 import dashboarddoc from './components/screens/dashboarddoc';
 import FindDoctor from './components/screens/find_doctor';
+import UpcomingSessions from './components/screens/upcoming_sessions';
+import PreviousSessions from './components/screens/previous_sessions';
 import {} from 'react-bootstrap'
 function App() {
   return (
@@ -32,7 +34,13 @@ function App() {
       <Route path="/dashboarddoc" exact component={dashboarddoc}/>
     </section>
     <section>
-      <Route path="/find-doctor" exanct component={FindDoctor}/>
+      <Route path="/find-doctor" exact component={FindDoctor}/>
+    </section>
+    <section>
+      <Route path="/upcoming-sessions" exact component={UpcomingSessions}/>
+    </section>
+    <section>
+      <Route path="/previous-sessions" exact component={PreviousSessions}/>
     </section>
   </div>
   );

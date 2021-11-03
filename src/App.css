@@ -200,3 +200,7 @@ img{
   vertical-align: middle;
   border-style:none;
 }
+
+.side-bar{
+  height: 100%;
+}
