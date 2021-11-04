@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Tilt from 'react-parallax-tilt';
 
 class PreviousSessions extends React.Component{
     render(){
@@ -35,6 +36,7 @@ class PreviousSessions extends React.Component{
                                 <h1>Previous Sessions</h1>
                                 <div className="row">
                                         <div className="col-sm-6">
+                                            <Tilt>
                                             <div className="ses-info">
                                             <h1>Previous Sessions</h1>
                                             <p>Session about panic</p>
@@ -43,8 +45,10 @@ class PreviousSessions extends React.Component{
                                             <p>Outcome: Due to reason</p>
                                             <button>Prescription</button>
                                         </div>
+                                        </Tilt>
                                     </div>
                                     <div className="col-sm-6">
+                                        <Tilt>
                                         <div className="ses-info">
                                             <h1>Upcoming Sessions</h1>
                                             <p>Session about panic</p>
@@ -53,8 +57,10 @@ class PreviousSessions extends React.Component{
                                             <p>Outcome: Due to reason</p>
                                             <button>Prescription</button>
                                         </div>
+                                        </Tilt>
                                     </div>
                                     <div className="col-sm-6">
+                                    <Tilt>
                                         <div className="ses-info">
                                             <h1>Routines</h1>
                                             <p>Session about panic</p>
@@ -63,8 +69,10 @@ class PreviousSessions extends React.Component{
                                             <p>Outcome: Due to reason</p>
                                             <button>Prescription</button>
                                         </div>
+                                        </Tilt>
                                     </div>
                                     <div className="col-sm-6">
+                                    <Tilt>
                                         <div className="ses-info">
                                             <h1>Prescriptions</h1>
                                             <p>Session about panic</p>
@@ -73,8 +81,10 @@ class PreviousSessions extends React.Component{
                                             <p>Outcome: Due to reason</p>
                                             <button>Prescription</button>
                                         </div>
+                                        </Tilt>
                                     </div>
                                     <div className="col-sm-6">
+                                    <Tilt>
                                         <div className="ses-info">
                                             <h1>Schedule Appointment</h1>
                                             <p>Session about panic</p>
@@ -83,6 +93,7 @@ class PreviousSessions extends React.Component{
                                             <p>Outcome: Due to reason</p>
                                             <button>Prescription</button>
                                         </div>
+                                        </Tilt>
                                     </div>
                                 </div>
                             </div>

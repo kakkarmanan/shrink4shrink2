@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import './dashboard.css';
+import Tilt from 'react-parallax-tilt';
+
 
 class dashboard extends React.Component{
     handleSignOut(){
@@ -51,6 +53,7 @@ class dashboard extends React.Component{
                         <div className="row mb-3">
                             <div className="col-xl-3 col-sm-6 py-2">
                                 <div className="card bg-success text-white h-100">
+                                <Tilt>
                                     <div className="card-body bg-success">
                                         <div class="rotate">
                                             <i class="fa fa-user fa-4x"></i>
@@ -58,9 +61,11 @@ class dashboard extends React.Component{
                                         <h6 class="text-uppercase">Sessions</h6>
                                         <h1 class="display-4">134</h1>
                                     </div>
+                                </Tilt>
                                 </div>
                             </div>
                             <div className="col-xl-3 col-sm-6 py-2">
+                                <Tilt>
                                 <div className="card bg-success text-white h-100">
                                     <div className="card-body bg-success">
                                         <div class="rotate">
@@ -70,8 +75,10 @@ class dashboard extends React.Component{
                                         <h1 class="display-4">12-01-2021, Tuesday</h1>
                                     </div>
                                 </div>
+                                </Tilt>
                             </div>
                             <div className="col-xl-3 col-sm-6 py-2">
+                            <Tilt>
                                 <div className="card bg-success text-white h-100">
                                     <div className="card-body bg-success">
                                         <div class="rotate">
@@ -81,6 +88,7 @@ class dashboard extends React.Component{
                                         <h1 class="display-4">12-01-2021, Tuesday</h1>
                                     </div>
                                 </div>
+                                </Tilt>
                             </div>
                         </div>
                         <div className="row">
