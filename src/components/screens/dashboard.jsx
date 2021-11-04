@@ -22,18 +22,12 @@ class dashboard extends React.Component{
                     <div className="row row-offcanvas row-offcanvas-left">
                         <div className="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0" id="sidebar" role="navigation">
                             <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
-                                <li className="nav-item"><a className="nav-link" href="#">Menu</a></li>
-                                <li className="nav-item">
-                                <a className="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports▾</a>
-                                <ul className="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                                <li className="nav-item"><a className="nav-link" href="">Report 1</a></li>
-                                <li className="nav-item"><a className="nav-link" href="">Report 2</a></li>
-                                </ul>
-                            </li>
-                            <li className="nav-item"><a className="nav-link" href="#features">Upcoming Sessions</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#previousSessions">Previous Sessions</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#routines">Routines</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#prescriptions">Prescriptions</a></li>
+                            <li className="nav-item"><a className="nav-link" href="/dashboard">Home</a></li> 
+                            <li className="nav-item"><a className="nav-link" href="/upcoming-sessions">Upcoming Sessions</a></li>
+                            <li className="nav-item"><a className="nav-link" href="/previous-sessions">Previous Sessions</a></li>
+                            <li className="nav-item"><a className="nav-link" href="/routines">Routines</a></li>
+                            <li className="nav-item"><a className="nav-link" href="/prescriptions">Prescriptions</a></li>
+                            <li className="nav-item"><a className="nav-link" href="/find-doctor">Find Doctor</a></li>
                         </ul>
                     </div>
 

@@ -11,9 +11,12 @@ import dashboarddoc from './components/screens/dashboarddoc';
 import FindDoctor from './components/screens/find_doctor';
 import UpcomingSessions from './components/screens/upcoming_sessions';
 import PreviousSessions from './components/screens/previous_sessions';
-import form from './components/screens/initialform';
+
 import Prescriptions from './components/screens/prescriptions';
+import form from './components/screens/initialform'
+import Patients from './components/screens/patients';
 import {} from 'react-bootstrap'
+import { getPaginationItemUtilityClass } from '@mui/material';
 function App() {
   return (
   <div>
@@ -49,6 +52,9 @@ function App() {
     </section>
     <section>
       <Route path="/prescriptions" exact component={Prescriptions}/>
+    </section>
+    <section>
+      <Route path="/patients" exact component={Patients}/>
     </section>
   </div>
   );
