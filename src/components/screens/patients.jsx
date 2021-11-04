@@ -1,41 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Tilt from 'react-parallax-tilt';
+import {Link} from "react-router-dom";
 
-class UpcomingSessions extends React.Component {
-    upcoming_sessions=[
+class Patients extends React.Component{
+    patients_info=[
         {
-            "date": "12:01:2021",
-            "Topic": "Panic",
-            "Duration": "1 hr",
-            "Prescriptions": "file",
-            "Outcome":"Due to reason",
+            "Name":"John Doe",
+            "Text":"Example Text",
+            "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
         },
         {
-            "date": "12:01:2021",
-            "Topic": "Rage",
-            "Duration": "1 hr",
-            "Prescriptions": "file",
-            "Outcome":"Due to reason",
+            "Name":"John Doe",
+            "Text":"Example Text",
+            "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
         },
         {
-            "date": "12:01:2021",
-            "Topic": "Brain",
-            "Duration": "1 hr",
-            "Prescriptions": "file",
-            "Outcome":"Due to reason",
-        }
+            "Name":"John Doe",
+            "Text":"Example Text",
+            "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
+        },
+        {
+            "Name":"John Doe",
+            "Text":"Example Text",
+            "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
+        },
     ];
-
     constructor(props){
         super(props);
         this.state={
-            data: this.upcoming_sessions,
+            data:this.patients_info,
         }
-    };
-
-    render() {
-        return (
+    }
+    render(){
+        return(
             <div>
                 <nav class="navbar navbar-dark bg-dark">
                     <div class="container-fluid">
@@ -58,22 +54,23 @@ class UpcomingSessions extends React.Component {
                             </ul>
                         </div>
                         <div className="col main pt-5 mt=3">
-                            <h1>Upcoming Sessions</h1>
-                            <div className="row">
-                                {this.state.data.map(ele=>(
-                                    <div className="col-sm-6">
-                                        <Tilt>
-                                            <div className="ses-info">
-                                                <h1>{ele.Topic}</h1>
-                                                <p>{ele.date}</p>
-                                                <p>{ele.Duration}</p>
-                                                <p>{ele.Outcome}</p>
-                                                <button>{ele.Prescriptions}</button>
-                                            </div>
-                                        </Tilt>
+                        <div className="row">
+                            {this.state.data.map(ele=>(
+                                <div className="col-md-4 mt-4">
+                                    <div class="card profile-card-5">
+                                        <div className="card-img-block">
+                                            <img class="card-img-top" src={ele.img} alt="img"/>
+                                        </div>
+                                            <div class="card-body">
+                                                <h4 class="card-title">{ele.Name}</h4>
+                                                <p class="card-text">{ele.Text}.</p>
+                                                <a href="/dashboard" class="btn btn-primary">See Profile</a>
+                                        </div>
                                     </div>
-                                ))}
                             </div>
+                            ))}
+                            
+                    </div>
                         </div>
                     </div>
 
@@ -83,4 +80,4 @@ class UpcomingSessions extends React.Component {
     }
 }
 
-export default UpcomingSessions;
+export default Patients;
