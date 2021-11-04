@@ -39,28 +39,33 @@ class Prescriptions extends React.Component {
                             <h1 className="text-light">Prescriptions</h1>
                             <div className="row">
                                 <div className="col-sm-6">
-                                    <Tilt style={{width:"220px", height:"300px"}}>
+                                    <Tilt style={{width:"220px", height:"300px",position:"relative"}}>
                                     <iframe src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{width:"220px", height:"300px",overflow:"hidden"}} frameborder="0" scrolling="no" ></iframe>
+                                    <a href="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{position:"absolute" ,top:"0", left:"0", display:"inline-block", width:"500px", height:"500px", ZIndex:"5"}}></a>
                                     </Tilt>
                                 </div>
                                 <div className="col-sm-6">
                                     <Tilt style={{width:"220px", height:"300px"}}>
                                     <iframe src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{width:"220px", height:"300px",overflow:"hidden"}} frameborder="0" scrolling="no" ></iframe>
+                                    <a href="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{position:"absolute" ,top:"0", left:"0", display:"inline-block", width:"500px", height:"500px", ZIndex:"5"}}></a>
                                     </Tilt>
                                 </div>
                                 <div className="col-sm-6">
                                     <Tilt style={{width:"220px", height:"300px"}}>
                                     <iframe src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{width:"220px", height:"300px",overflow:"hidden"}} frameborder="0" scrolling="no" ></iframe>
+                                    <a href="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{position:"absolute" ,top:"0", left:"0", display:"inline-block", width:"500px", height:"500px", ZIndex:"5"}}></a>
                                     </Tilt>
                                 </div>
                                 <div className="col-sm-6">
                                     <Tilt style={{width:"220px", height:"300px"}}>
                                     <iframe src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{width:"220px", height:"300px",overflow:"hidden"}} frameborder="0" scrolling="no" ></iframe>
+                                    <a href="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{position:"absolute" ,top:"0", left:"0", display:"inline-block", width:"500px", height:"500px", ZIndex:"5"}}></a>
                                     </Tilt>
                                 </div>
                                 <div className="col-sm-6">
                                     <Tilt style={{width:"220px", height:"300px"}}>
                                     <iframe src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{width:"220px", height:"300px",overflow:"hidden"}} frameborder="0" scrolling="no" ></iframe>
+                                    <a href="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{position:"absolute" ,top:"0", left:"0", display:"inline-block", width:"500px", height:"500px", ZIndex:"5"}}></a>
                                     </Tilt>
                                 </div>
                             </div>
