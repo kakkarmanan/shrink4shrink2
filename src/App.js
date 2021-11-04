@@ -11,7 +11,8 @@ import dashboarddoc from './components/screens/dashboarddoc';
 import FindDoctor from './components/screens/find_doctor';
 import UpcomingSessions from './components/screens/upcoming_sessions';
 import PreviousSessions from './components/screens/previous_sessions';
-import form from './components/screens/initialform'
+import form from './components/screens/initialform';
+import Prescriptions from './components/screens/prescriptions';
 import {} from 'react-bootstrap'
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
     </section>
     <section>
       <Route path="/form" exact component={form}/>
+    </section>
+    <section>
+      <Route path="/prescriptions" exact component={Prescriptions}/>
     </section>
   </div>
   );
