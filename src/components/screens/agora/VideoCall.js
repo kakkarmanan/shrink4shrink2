@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  AgoraVideoPlayer,
-  createClient,
-  createMicrophoneAndCameraTracks,
-} from "agora-rtc-react";
+import { createClient, createMicrophoneAndCameraTracks } from "agora-rtc-react";
+import React, { useState } from "react";
 import Video from "./Video";
 
 const config = { mode: "rtc", codec: "vp8" };
@@ -22,7 +18,7 @@ const VideoCall = () => {
   return (
     <>
       {!inCall ? (
-        <div class="row">
+        <div className="row">
           <div>
             <button onClick={onClickHandler} type="button" id="join">
               JOIN

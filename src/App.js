@@ -1,22 +1,21 @@
 import React from "react";
+import {} from "react-bootstrap";
 import { Route } from "react-router-dom";
 import "./App.css";
-import RegisterPage from "./components/screens/register";
-import RegisterPageDoc from "./components/screens/registerdoc";
-import LoginPage from "./components/screens/login";
-import LandingPage from "./components/screens/landing";
+import VideoCall from "./components/screens/agora/VideoCall";
 import dashboard from "./components/screens/dashboard";
 import dashboarddoc from "./components/screens/dashboarddoc";
 import FindDoctor from "./components/screens/find_doctor";
-import UpcomingSessions from "./components/screens/upcoming_sessions";
-import PreviousSessions from "./components/screens/previous_sessions";
-import Routines from "./components/screens/routines";
-import Prescriptions from "./components/screens/prescriptions";
 import form from "./components/screens/initialform";
+import LandingPage from "./components/screens/landing";
+import LoginPage from "./components/screens/login";
 import Patients from "./components/screens/patients";
-import VideoCall from "./components/screens/agora/VideoCall";
-import {} from "react-bootstrap";
-import { getPaginationItemUtilityClass } from "@mui/material";
+import Prescriptions from "./components/screens/prescriptions";
+import PreviousSessions from "./components/screens/previous_sessions";
+import RegisterPage from "./components/screens/register";
+import RegisterPageDoc from "./components/screens/registerdoc";
+import Routines from "./components/screens/routines";
+import UpcomingSessions from "./components/screens/upcoming_sessions";
 
 function App() {
   return (

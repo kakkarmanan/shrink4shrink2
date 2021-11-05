@@ -1,5 +1,5 @@
 import { AgoraVideoPlayer } from "agora-rtc-react";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import recognizeMic from "watson-speech/speech-to-text/recognize-microphone";
 
 const Video = ({
@@ -12,7 +12,7 @@ const Video = ({
   token,
 }) => {
   const [users, setUsers] = useState([]);
-  const [start, setStart] = useState(false);
+  const [, setStart] = useState(false);
   const [text, setText] = useState(
     "lorfdjfd fdjdgjvbkjdbvj bk kjsdjvbvdbkv jb vbjvbkbvkjsbkk ejwus fuwf"
   );
@@ -61,7 +61,7 @@ const Video = ({
       console.log("init ready");
       init(channelName);
     }
-  }, [channelName, ready, tracks, client]);
+  }, [channelName, ready, tracks, client, appId, token, users]);
   const s2t = () => {
     fetch("http://localhost:3001/api/speech-to-text/token")
       .then((response) => response.json())
