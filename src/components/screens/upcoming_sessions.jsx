@@ -57,8 +57,8 @@ class UpcomingSessions extends React.Component {
                                 <li className="nav-item"><a className="nav-link" href="/find-doctor">Find Doctor</a></li>
                             </ul>
                         </div>
-                        <div className="col main pt-5 mt=3">
-                            <h1>Upcoming Sessions</h1>
+                        <div className="col main pt-5 mt=3 border border-dark" style={{backgroundColor:"#303030"}}>
+                            <h1 className="text-light">Upcoming Sessions</h1>
                             <div className="row">
                                 {this.state.data.map(ele=>(
                                     <div className="col-sm-6">
@@ -68,7 +68,7 @@ class UpcomingSessions extends React.Component {
                                                 <p>{ele.date}</p>
                                                 <p>{ele.Duration}</p>
                                                 <p>{ele.Outcome}</p>
-                                                <button>{ele.Prescriptions}</button>
+                                                <button style={{color:"#303030"}}>{ele.Prescriptions}</button>
                                             </div>
                                         </Tilt>
                                     </div>
