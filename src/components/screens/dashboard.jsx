@@ -27,6 +27,7 @@ class dashboard extends React.Component{
                             <li className="nav-item"><a className="nav-link" href="/previous-sessions">Previous Sessions</a></li>
                             <li className="nav-item"><a className="nav-link" href="/routines">Routines</a></li>
                             <li className="nav-item"><a className="nav-link" href="/prescriptions">Prescriptions</a></li>
+                            <li className="nav-item"><a className="nav-link" href="/prescriptions">New Session</a></li>
                             <li className="nav-item"><a className="nav-link" href="/find-doctor">Find Doctor</a></li>
                         </ul>
                     </div>
