@@ -29,13 +29,14 @@ class Prescriptions extends React.Component {
                                 <li className="nav-item"><a className="text-light nav-link" href="/find-doctor">Find Doctor</a></li>
                             </ul>
                         </div>
-                        <div className="col main pt-5 mt=3 border border-dark" style={{backgroundColor:"#303030"}}>
-                            <h1 className="text-light">Prescriptions</h1>
+                        <div className="col main pt-5 mt=3 border border-dark" style={{backgroundColor:"#FAF3F3"}}>
+                            <h1 className="text-dark">Prescriptions</h1>
                             <div className="row">
                                 <div className="col-sm-6" style={{margin:"30px", width:"220px", height:"300px"}}>
                                     <Tilt style={{margin:"30px", width:"220px", height:"300px"}}>
                                     <iframe src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{width:"220px", height:"300px",overflow:"hidden"}} frameborder="0" scrolling="no" ></iframe>
                                     <a href="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f" style={{position:"absolute" ,top:"0", left:"0", display:"inline-block", width:"220px", height:"300px", ZIndex:"5"}}></a>
+                                    <div id="over" style={{fontSize:"1em", position:"absolute", top:"250px", left:"20px", ZIndex:"2"}}>Prescriptions</div>
                                     </Tilt>
                                 </div>
                                 <div className="col-sm-6" style={{margin:"30px",width:"220px", height:"300px"}}>

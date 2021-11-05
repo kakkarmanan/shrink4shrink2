@@ -21,7 +21,7 @@ class dashboarddoc extends React.Component{
                 <div className="row row-offcanvas row-offcanvas-left">
                     <div className="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0" id="sidebar" role="navigation">
                         <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
-                            <li className="nav-item"><a className="nav-link" href="#">Menu</a></li>
+                            <li className="nav-item"><a className="nav-link" href="#">Homepage</a></li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports▾</a>
                                 <ul className="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
@@ -31,7 +31,7 @@ class dashboarddoc extends React.Component{
                             </li>
                             <li className="nav-item"><a className="nav-link" href="#features">Upcoming Sessions</a></li>
                             <li className="nav-item"><a className="nav-link" href="#previousSessions">Previous Sessions</a></li>
-                            <li className="nav-item"><a className="nav-link" href="#routines">Routines</a></li>
+                            <li className="nav-item"><a className="nav-link" href="#routines">Patients</a></li>
                             <li className="nav-item"><a className="nav-link" href="#prescriptions">Prescriptions</a></li>
                         </ul>
                     </div>
