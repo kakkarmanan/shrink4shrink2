@@ -65,9 +65,9 @@ class Prescriptions extends React.Component {
             </div>
             <div
               className="col main pt-5 mt=3 border border-dark"
-              style={{ backgroundColor: "#303030" }}
+              style={{ backgroundColor: "#FAF3F3" }}
             >
-              <h1 className="text-light">Prescriptions</h1>
+              <h1 className="text-dark">Prescriptions</h1>
               <div className="row">
                 {[1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => {
                   return (

@@ -37,7 +37,7 @@ class dashboarddoc extends React.Component {
               <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    Menu
+                    Homepage
                   </a>
                 </li>
                 <li className="nav-item">
@@ -78,7 +78,7 @@ class dashboarddoc extends React.Component {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#routines">
-                    Routines
+                    Patients
                   </a>
                 </li>
                 <li className="nav-item">
