@@ -13,16 +13,16 @@ class Patients extends React.Component{
             "Text":"Example Text",
             "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
         },
-        {
-            "Name":"John Doe",
-            "Text":"Example Text",
-            "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-        },
-        {
-            "Name":"John Doe",
-            "Text":"Example Text",
-            "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-        },
+        // {
+        //     "Name":"John Doe",
+        //     "Text":"Example Text",
+        //     "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
+        // },
+        // {
+        //     "Name":"John Doe",
+        //     "Text":"Example Text",
+        //     "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
+        // },
     ];
     constructor(props){
         super(props);

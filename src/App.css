@@ -204,3 +204,7 @@ img{
 .side-bar{
   height: 100%;
 }
+
+#sidebar{
+  height:100vw
+}
