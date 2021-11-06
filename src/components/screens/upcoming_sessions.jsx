@@ -17,7 +17,7 @@ class UpcomingSessions extends React.Component {
     };
   }
   componentDidMount=()=>{
-        fetch("http://localhost:3001/api/usersessions",{
+        fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
