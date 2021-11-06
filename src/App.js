@@ -11,6 +11,7 @@ import LandingPage from "./components/screens/landing";
 import LoginPage from "./components/screens/login";
 import Patients from "./components/screens/patients";
 import Prescriptions from "./components/screens/prescriptions";
+import newsession from "./components/screens/newsessions";
 import PreviousSessions from "./components/screens/previous_sessions";
 import RegisterPage from "./components/screens/register";
 import RegisterPageDoc from "./components/screens/registerdoc";
@@ -52,6 +53,9 @@ function App() {
       </section>
       <section>
         <Route path="/prescriptions" exact component={Prescriptions} />
+      </section>
+      <section>
+        <Route path="/newsession" exact component={newsession} />
       </section>
       <section>
         <Route path="/patients" exact component={Patients} />
