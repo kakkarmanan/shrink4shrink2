@@ -17,6 +17,10 @@ const Video = ({
     "lorfdjfd fdjdgjvbkjdbvj bk kjsdjvbvdbkv jb vbjvbkbvkjsbkk ejwus fuwf"
   );
   const client = useClient();
+  let endpoint = "https://shrink4shrink.herokuapp.com";
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+    endpoint = "http://localhost:3001";
+  }
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   useEffect(() => {
     const init = async (name) => {
@@ -63,7 +67,7 @@ const Video = ({
     }
   }, [channelName, ready, tracks, client, appId, token, users]);
   const s2t = () => {
-    fetch("http://localhost:3001/api/speech-to-text/token")
+    fetch(`${endpoint}/api/speech-to-text/token`)
       .then((response) => response.json())
       .then((token) => {
         console.log(token);
