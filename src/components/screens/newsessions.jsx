@@ -71,39 +71,44 @@ class newsession extends React.Component {
             >
               <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
                 <li className="nav-item">
-                  <a className="text-light nav-link" href="/dashboard">
+                  <a className="nav-link text-light" href="/dashboard">
                     Home
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="text-light nav-link" href="/upcoming-sessions">
+                  <a className="nav-link text-light" href="/upcoming-sessions">
                     Upcoming Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="text-light nav-link" href="/previous-sessions">
+                  <a className="nav-link text-light" href="/previous-sessions">
                     Previous Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="text-light nav-link" href="/routines">
+                  <a className="nav-link text-light" href="/routines">
                     Routines
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="text-light nav-link" href="/prescriptions">
+                  <a className="nav-link text-light" href="/prescriptions">
                     Prescriptions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="text-light nav-link" href="/find-doctor">
+                  <a className="nav-link text-light" href="/newsession">
+                    New Session
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/find-doctor">
                     Find Doctor
                   </a>
                 </li>
               </ul>
             </div>
-            <div className="col main pt-5 mt-3">
-              <h1 className="display-4 d-none d-sm-block">Schedule a session</h1>
+            <div className="col main pt-5 mt-3" style={{ backgroundColor: "#FAF3F3" }}>
+              <h1 className="display-4 d-none d-sm-block text-dark">Schedule a session</h1>
               <div class="form-outline">
               <div className="col-md-6 mb-4">
                             <div className="form-outline">

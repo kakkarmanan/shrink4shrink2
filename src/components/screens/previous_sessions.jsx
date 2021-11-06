@@ -52,43 +52,44 @@ class PreviousSessions extends React.Component {
         <div className="container-fluid" id="main">
           <div className="row row-offcanvas row-offcanvas-left">
             <div
-              className="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0"
+              className="col-md-3 col-lg-2 sidebar-offcanvas pl-0"
               id="sidebar"
               role="navigation"
+              style={{ backgroundColor: "#171010" }}
             >
               <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
                 <li className="nav-item">
-                  <a className="nav-link" href="/dashboard">
+                  <a className="nav-link text-light" href="/dashboard">
                     Home
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/upcoming-sessions">
+                  <a className="nav-link text-light" href="/upcoming-sessions">
                     Upcoming Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/previous-sessions">
+                  <a className="nav-link text-light" href="/previous-sessions">
                     Previous Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/routines">
+                  <a className="nav-link text-light" href="/routines">
                     Routines
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/prescriptions">
+                  <a className="nav-link text-light" href="/prescriptions">
                     Prescriptions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/newsession">
+                  <a className="nav-link text-light" href="/newsession">
                     New Session
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/find-doctor">
+                  <a className="nav-link text-light" href="/find-doctor">
                     Find Doctor
                   </a>
                 </li>
@@ -96,9 +97,9 @@ class PreviousSessions extends React.Component {
             </div>
             <div
               className="col main pt-5 mt=3 border border-dark"
-              style={{ backgroundColor: "#303030" }}
+              style={{ backgroundColor: "#FAF3F3" }}
             >
-              <h1 className="text-light">Previous Sessions</h1>
+              <h1 className="text-dark">Previous Sessions</h1>
               <div className="row">
                 {this.state.data.map((ele,i) => (
                   <div key={i} className="col-sm-6">
