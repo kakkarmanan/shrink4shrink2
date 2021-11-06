@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
 
 class PreviousSessions extends React.Component {
+  handleSignOut() {
+    localStorage.removeItem("user");
+  }
   previous_sessions = [
   ];
 
@@ -39,7 +42,7 @@ class PreviousSessions extends React.Component {
               s4s
             </a>
             <form className="d-flex">
-              <Link to="/login" className="button btn btn-outline-success me-2">
+              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
                 {" "}
                 Logout
               </Link>

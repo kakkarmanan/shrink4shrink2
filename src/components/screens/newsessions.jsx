@@ -54,7 +54,7 @@ class newsession extends React.Component {
               s4s
             </a>
             <form className="d-flex">
-              <Link to="/login" className="button btn btn-outline-success me-2">
+              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
                 {" "}
                 Logout
               </Link>

@@ -14,6 +14,9 @@ var metadata = {
 };
 
 class Routines extends React.Component {
+  handleSignOut() {
+    localStorage.removeItem("user");
+  }
   routines = [
     "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f",
     "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f",
@@ -69,7 +72,7 @@ class Routines extends React.Component {
               s4s
             </a>
             <form className="d-flex">
-              <Link to="/login" className="button btn btn-outline-success me-2">
+              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
                 {" "}
                 Logout
               </Link>

@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class FindDoctor extends React.Component {
+  handleSignOut() {
+    localStorage.removeItem("user");
+  }
   doctor_info = [
     {
       Name: "John Doe",
@@ -39,7 +42,7 @@ class FindDoctor extends React.Component {
               s4s
             </a>
             <form className="d-flex">
-              <Link to="/login" className="button btn btn-outline-success me-2">
+              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut}>
                 {" "}
                 Logout
               </Link>
