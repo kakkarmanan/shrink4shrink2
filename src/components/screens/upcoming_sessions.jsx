@@ -4,34 +4,31 @@ import Tilt from "react-parallax-tilt";
 
 class UpcomingSessions extends React.Component {
   upcoming_sessions = [
-    {
-      date: "12:01:2021",
-      Topic: "Panic",
-      Duration: "1 hr",
-      Prescriptions: "file",
-      Outcome: "Due to reason",
-    },
-    {
-      date: "12:01:2021",
-      Topic: "Rage",
-      Duration: "1 hr",
-      Prescriptions: "file",
-      Outcome: "Due to reason",
-    },
-    {
-      date: "12:01:2021",
-      Topic: "Brain",
-      Duration: "1 hr",
-      Prescriptions: "file",
-      Outcome: "Due to reason",
-    },
   ];
 
   constructor(props) {
     super(props);
     this.state = {
       data: this.upcoming_sessions,
+      u:JSON.parse(localStorage.getItem("user"))
     };
+  }
+  componentDidMount=()=>{
+        fetch("http://localhost:3001/api/usersessions",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email,
+                upcoming:"true"
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+        this.setState({
+          data: resp
+        });
+    });
   }
 
   render() {
@@ -84,6 +81,11 @@ class UpcomingSessions extends React.Component {
                   </a>
                 </li>
                 <li className="nav-item">
+                  <a className="nav-link" href="/newsession">
+                    New Session
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="/find-doctor">
                     Find Doctor
                   </a>
@@ -100,13 +102,10 @@ class UpcomingSessions extends React.Component {
                   <div className="col-sm-6">
                     <Tilt>
                       <div className="ses-info">
-                        <h1>{ele.Topic}</h1>
+                        <h1>{ele.title}</h1>
                         <p>{ele.date}</p>
-                        <p>{ele.Duration}</p>
+                        <p>{ele.time}</p>
                         <p>{ele.Outcome}</p>
-                        <button style={{ color: "#303030" }}>
-                          {ele.Prescriptions}
-                        </button>
                       </div>
                     </Tilt>
                   </div>
