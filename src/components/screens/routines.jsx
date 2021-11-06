@@ -131,7 +131,7 @@ class Routines extends React.Component {
                       name="licensedoc"
                       onChange={this.onFile}
                     />
-                    <label className="form-label text-light" for="customFile">
+                    <label className="form-label text-light" htmlFor="customFile">
                       Upload Routine(pdf)
                     </label>
                   </div>
@@ -169,7 +169,7 @@ class Routines extends React.Component {
                           height: "300px",
                           overflow: "hidden",
                         }}
-                        frameborder="0"
+                        frameBorder="0"
                         scrolling="no"
                       ></iframe>
                       <a

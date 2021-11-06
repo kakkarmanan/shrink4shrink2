@@ -98,8 +98,8 @@ class UpcomingSessions extends React.Component {
             >
               <h1 className="text-light">Upcoming Sessions</h1>
               <div className="row">
-                {this.state.data.map((ele) => (
-                  <div className="col-sm-6">
+                {this.state.data.map((ele,i) => (
+                  <div key={i} className="col-sm-6">
                     <Tilt>
                       <div className="ses-info">
                         <h1>{ele.title}</h1>
