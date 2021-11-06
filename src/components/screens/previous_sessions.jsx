@@ -80,6 +80,11 @@ class PreviousSessions extends React.Component {
                   </a>
                 </li>
                 <li className="nav-item">
+                  <a className="nav-link" href="/newsession">
+                    New Session
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" href="/find-doctor">
                     Find Doctor
                   </a>
