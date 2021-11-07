@@ -13,15 +13,14 @@ const Video = ({
 }) => {
   const [users, setUsers] = useState([]);
   const [, setStart] = useState(false);
-  const [text, setText] = useState(
-    "lorfdjfd fdjdgjvbkjdbvj bk kjsdjvbvdbkv jb vbjvbkbvkjsbkk ejwus fuwf"
-  );
+  const [text, setText] = useState([""]);
   const client = useClient();
   let endpoint = "https://shrink4shrink.herokuapp.com";
-  if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-    endpoint = "http://localhost:3001";
-  }
+  // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+  //   endpoint = "http://localhost:3001";
+  // }
   const { ready, tracks } = useMicrophoneAndCameraTracks();
+  console.log(token);
   useEffect(() => {
     const init = async (name) => {
       client.on("user-published", async (user, mediaType) => {
@@ -72,7 +71,6 @@ const Video = ({
       .then((token) => {
         console.log(token);
         var stream = recognizeMic({
-          // token: token.accessToken,
           accessToken: token.accessToken,
           url: token.url,
           objectMode: true, // send objects instead of text
@@ -85,7 +83,9 @@ const Video = ({
          * and assigns the text to the state.
          */
         stream.on("data", (data) => {
-          setText(data.alternatives[0].transcript);
+          setText((prev) => {
+            return [...prev, data.alternatives[0].transcript];
+          });
           console.log(data);
         });
         stream.on("error", function (err) {
@@ -120,7 +120,7 @@ const Video = ({
             );
           })}
       </div>
-      <div style={{ fontSize: "30px" }}>{text}</div>
+      <div style={{ fontSize: "30px" }}>{text.toString()}</div>
     </div>
   );
 };
