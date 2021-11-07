@@ -3,7 +3,7 @@ import {} from "react-bootstrap";
 import { Route } from "react-router-dom";
 import "./App.css";
 import VideoCall from "./components/screens/agora/VideoCall";
-import Dashboard from "./components/screens/dashboard";
+import Dashboard from "./components/screens/Dashboard";
 import dashboarddoc from "./components/screens/dashboarddoc";
 import FindDoctor from "./components/screens/find_doctor";
 import form from "./components/screens/initialform";
@@ -72,7 +72,7 @@ function App() {
         <Route exact path="/call/:sessionId" component={VideoCall} />
       </section>
       <section>
-        <Route path="/doctor/:name" component={DoctorProfile}/>
+        <Route path="/doctor/:name" component={DoctorProfile} />
       </section>
     </div>
   );

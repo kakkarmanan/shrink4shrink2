@@ -1,6 +1,9 @@
 import { AgoraVideoPlayer } from "agora-rtc-react";
 import React, { useEffect, useState } from "react";
 import recognizeMic from "watson-speech/speech-to-text/recognize-microphone";
+import firebase from "../../../firebase";
+
+const storageRef = firebase.storage().ref();
 
 const Video = ({
   useClient,
@@ -65,41 +68,58 @@ const Video = ({
       init(channelName);
     }
   }, [channelName, ready, tracks, client, appId, token, users]);
-  const s2t = () => {
-    fetch(`${endpoint}/api/speech-to-text/token`)
-      .then((response) => response.json())
-      .then((token) => {
-        console.log(token);
-        var stream = recognizeMic({
-          accessToken: token.accessToken,
-          url: token.url,
-          objectMode: true, // send objects instead of text
-          extractResults: true, // convert {results: [{alternatives:[...]}], result_index: 0} to {alternatives: [...], index: 0}
-          format: false, // optional - performs basic formatting on the results such as capitals an periods
-        });
-        console.log(stream);
-        /**
-         * Prints the users speech to the console
-         * and assigns the text to the state.
-         */
-        stream.on("data", (data) => {
-          setText((prev) => {
-            return [...prev, data.alternatives[0].transcript];
+  useEffect(() => {
+    const s2t = () => {
+      fetch(`${endpoint}/api/speech-to-text/token`)
+        .then((response) => response.json())
+        .then((token) => {
+          console.log(token);
+          var stream = recognizeMic({
+            accessToken: token.accessToken,
+            url: token.url,
+            objectMode: true, // send objects instead of text
+            extractResults: true, // convert {results: [{alternatives:[...]}], result_index: 0} to {alternatives: [...], index: 0}
+            format: false, // optional - performs basic formatting on the results such as capitals an periods
           });
-          console.log(data);
+          console.log(stream);
+          /**
+           * Prints the users speech to the console
+           * and assigns the text to the state.
+           */
+          stream.on("data", (data) => {
+            if (data.final && data.alternatives[0].confidence > 0.5) {
+              setText((prev) => {
+                return [...prev, data.alternatives[0].transcript];
+              });
+            }
+            console.log(data);
+          });
+          stream.on("error", function (err) {
+            console.log(err);
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
         });
-        stream.on("error", function (err) {
-          console.log(err);
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-  if (inCall) {
+    };
     s2t();
-  }
-  console.log(tracks);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inCall]);
+  const generateReport = async () => {
+    const file = new Blob([text], {
+      type: "text/plain",
+    });
+    try {
+      var mtRef = await storageRef.child(
+        "notes-" + JSON.parse(localStorage.getItem("user"))._id + ".txt"
+      );
+      await mtRef.put(file);
+      const res = await mtRef.getDownloadURL();
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div style={{ padding: "10px 5px" }}>
       <div style={{ display: "flex", flex: 1 }}>
@@ -121,6 +141,9 @@ const Video = ({
           })}
       </div>
       <div style={{ fontSize: "30px" }}>{text.toString()}</div>
+      <button onClick={generateReport} type="button" class="btn btn-success">
+        Success
+      </button>
     </div>
   );
 };
