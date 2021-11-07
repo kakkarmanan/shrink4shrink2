@@ -10,8 +10,6 @@ class form extends React.Component{
     onsub=(eve)=>{
         console.log("submit")
         this.props.history.push("/dashboard");
-
-
       }
     render(){return(
         <div style={{height:'100%'}}>
