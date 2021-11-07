@@ -17,6 +17,7 @@ import RegisterPage from "./components/screens/register";
 import RegisterPageDoc from "./components/screens/registerdoc";
 import Routines from "./components/screens/routines";
 import UpcomingSessions from "./components/screens/upcoming_sessions";
+import DoctorProfile from "./components/screens/doctor_profile";
 
 function App() {
   return (
@@ -65,6 +66,9 @@ function App() {
       </section>
       <section>
         <Route exact path="/call" component={VideoCall} />
+      </section>
+      <section>
+        <Route path="/doctor/:name" component={DoctorProfile}/>
       </section>
     </div>
   );

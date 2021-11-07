@@ -6,32 +6,36 @@ class FindDoctor extends React.Component {
     localStorage.removeItem("user");
   }
   doctor_info = [
-    {
-      Name: "John Doe",
-      Text: "Example Text",
-      img: "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    },
-    {
-      Name: "John Doe",
-      Text: "Example Text",
-      img: "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    },
-    {
-      Name: "John Doe",
-      Text: "Example Text",
-      img: "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    },
-    {
-      Name: "John Doe",
-      Text: "Example Text",
-      img: "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    },
   ];
   constructor(props) {
     super(props);
     this.state = {
       data: this.doctor_info,
+      u:JSON.parse(localStorage.getItem("user"))
     };
+  }
+  componentDidMount=()=>{
+    fetch("https://shrink4shrink.herokuapp.com/api/get_doctors",{
+      method:"post",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        email:this.state.u.email,
+      }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+        this.setState({
+          data: resp
+        });
+        console.log(this.state.data);
+    });
+  }
+
+  seeProfile=(e)=>{
+    var email=e.target.title;
+    console.log(email);
+    this.props.history.push("/doctor/"+email);
   }
   render() {
     return (
@@ -101,18 +105,18 @@ class FindDoctor extends React.Component {
             >
               <h1 className="text-dark">Find Doctor</h1>
               <div className="row">
-                {this.state.data.map((ele) => (
-                  <div className="col-md-4 mt-4">
+                {this.state.data.map((ele,i) => (
+                  <div key={i} className="col-md-4 col-lg-4 col-sm-12 mt-4">
                     <div className="card profile-card-5">
                       <div className="card-img-block">
-                        <img className="card-img-top" src={ele.img} alt="img" />
+                        <img className="card-img-top" src={ele.picture} alt="img" />
                       </div>
                       <div className="card-body">
-                        <h4 className="card-title">{ele.Name}</h4>
-                        <p className="card-text">{ele.Text}.</p>
-                        <a href="/dashboard" className="btn btn-primary">
+                        <h4 className="card-title">Dr.{ele.firstname} {ele.lastname}</h4>
+                        <p className="card-text">{ele.username}</p>
+                        <button className="btn btn-primary" style={{marginLeft:"10px"}} title={ele.username} onClick={this.seeProfile}>
                           See Profile
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
