@@ -5,6 +5,12 @@ import { Link } from "react-router-dom";
 import "./dashboard.css";
 
 class dashboarddoc extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      u:JSON.parse(localStorage.getItem("user"))
+    }
+  }
   handleSignOut() {
     localStorage.removeItem("user");
   }
@@ -30,68 +36,43 @@ class dashboarddoc extends React.Component {
         <div className="container-fluid" id="main">
           <div className="row row-offcanvas row-offcanvas-left">
             <div
-              className="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0"
+              className="col-md-3 col-lg-2 sidebar-offcanvas pl-0"
               id="sidebar"
               role="navigation"
+              style={{ backgroundColor: "#171010" }}
             >
               <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link text-light" href="#">
                     Homepage
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    href="#submenu1"
-                    data-toggle="collapse"
-                    data-target="#submenu1"
-                  >
-                    Reports▾
-                  </a>
-                  <ul
-                    className="list-unstyled flex-column pl-3 collapse"
-                    id="submenu1"
-                    aria-expanded="false"
-                  >
-                    <li className="nav-item">
-                      <a className="nav-link" href="">
-                        Report 1
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="">
-                        Report 2
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#features">
+                  <a className="nav-link text-light" href="/upcoming-sessions">
                     Upcoming Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#previousSessions">
+                  <a className="nav-link text-light" href="/previous-sessions">
                     Previous Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#routines">
+                  <a className="nav-link text-light" href="/routines">
                     Patients
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#prescriptions">
-                    Prescriptions
+                  <a className="nav-link text-light" href="/addpresc">
+                    Add Prescriptions
                   </a>
                 </li>
               </ul>
             </div>
 
             <div className="col main pt-5 mt-3">
-              <h1 className="display-4 d-none d-sm-block">UserName</h1>
-              <p className="lead d-none d-sm-block">Dashboard</p>
+              <h1 className="display-4 d-none d-sm-block">{this.state.u.firstname} {this.state.u.lastname}</h1>
+              <h2 className="lead d-none d-sm-block">Dashboard</h2>
 
               <div
                 className="alert alert-warning fade collapse"

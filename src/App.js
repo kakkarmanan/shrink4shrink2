@@ -3,7 +3,7 @@ import {} from "react-bootstrap";
 import { Route } from "react-router-dom";
 import "./App.css";
 import VideoCall from "./components/screens/agora/VideoCall";
-import Dashboard from "./components/screens/Dashboard";
+import Dashboard from "./components/screens/dashboard";
 import dashboarddoc from "./components/screens/dashboarddoc";
 import FindDoctor from "./components/screens/find_doctor";
 import form from "./components/screens/initialform";
@@ -16,6 +16,7 @@ import PreviousSessions from "./components/screens/previous_sessions";
 import RegisterPage from "./components/screens/register";
 import RegisterPageDoc from "./components/screens/registerdoc";
 import Routines from "./components/screens/routines";
+import AddPresc from "./components/screens/addpresc";
 import UpcomingSessions from "./components/screens/upcoming_sessions";
 import DoctorProfile from "./components/screens/doctor_profile";
 
@@ -63,6 +64,9 @@ function App() {
       </section>
       <section>
         <Route path="/routines" exact component={Routines} />
+      </section>
+      <section>
+        <Route path="/addpresc" exact component={AddPresc} />
       </section>
       <section>
         <Route exact path="/call/:sessionId" component={VideoCall} />
