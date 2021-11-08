@@ -106,19 +106,30 @@ const Video = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inCall]);
   const generateReport = async () => {
-    const file = new Blob([text], {
-      type: "text/plain",
+    let data = await fetch("/api/notes", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: text,
+      }),
     });
-    try {
-      var mtRef = await storageRef.child(
-        "notes-" + JSON.parse(localStorage.getItem("user"))._id + ".txt"
-      );
-      await mtRef.put(file);
-      const res = await mtRef.getDownloadURL();
-      console.log(res);
-    } catch (e) {
-      console.log(e);
-    }
+    data = await data.json();
+    console.log(data);
+    // const file = new Blob([text], {
+    //   type: "text/plain",
+    // });
+    // try {
+    //   var mtRef = await storageRef.child(
+    //     "notes-" + JSON.parse(localStorage.getItem("user"))._id + ".txt"
+    //   );
+    //   await mtRef.put(file);
+    //   const res = await mtRef.getDownloadURL();
+    //   console.log(res);
+    // } catch (e) {
+    //   console.log(e);
+    // }
   };
   return (
     <div style={{ padding: "10px 5px" }}>
