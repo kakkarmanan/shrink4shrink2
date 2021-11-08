@@ -1,5 +1,4 @@
 import React from "react";
-import Tilt from "react-parallax-tilt";
 import { Link } from "react-router-dom";
 import firebase from "../../firebase";
 
@@ -19,14 +18,13 @@ class AddPresc extends React.Component {
   handleSignOut() {
     localStorage.removeItem("user");
   }
-  routines = [
-  ];
   constructor(props) {
     super(props);
     this.state = {
-      data: this.routines,
-      uemail:"",
+      data: "",
       selectedFile: null,
+      uemail:"",
+      sid:""
     };
   }
   onFile = (e) => {
@@ -53,13 +51,34 @@ class AddPresc extends React.Component {
         const res = await mountainsRef.getDownloadURL();
         console.log(res);
         this.setState({
-          data: [...this.state.data, res],
+          data: res,
         });
+        fetch("https://shrink4shrink.herokuapp.com/api/add_presciption",{
+      method:"post",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        email:this.state.uemail,
+        id:this.state.sid,
+        prescription:this.state.data
+      }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+    });
+  
         // setTimeout(()=>{},5000);
       } catch (err) {
         console.log(err);
       }
     }
+  };
+  componentDidMount=()=>{
+    console.log(this.props.match.params.email);
+    const email = this.props.match.params.email;
+    console.log(this.props.match.params.sid);
+    const sid1 = this.props.match.params.sid;
+    this.setState({uemail:email,sid:sid1});
   };
   render() {
     return (
@@ -88,7 +107,7 @@ class AddPresc extends React.Component {
               <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
                 <li className="nav-item">
                   <a className="nav-link text-light" href="/dashboarddoc">
-                    Home
+                    Homepage
                   </a>
                 </li>
                 <li className="nav-item">
@@ -102,8 +121,8 @@ class AddPresc extends React.Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="/routines">
-                    Routines
+                  <a className="nav-link text-light" href="/patients">
+                    Patients
                   </a>
                 </li>
                 <li className="nav-item">
@@ -118,28 +137,7 @@ class AddPresc extends React.Component {
               style={{ backgroundColor: "#FAF3F3" }}
             >
               <h1 className="text-dark">Upload Patient Prescriptions</h1>
-              <div className="row">
-                          <div className="form-outline mb-4">
-                            <div className="form-outline">
-                              <input
-                                type="email"
-                                id="form3Example1m"
-                                className="form-control form-control-lg"
-                                name="email"
-                                value={this.state.email}
-                                onChange={this.onChange}
-                                style={{width:"40%"}}
-                                required
-                              />
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example1m"
-                              >
-                                Email of Patient
-                              </label>
-                            </div>
-                          </div>
-                        </div>
+              <p className="lead d-none d-sm-block">Upload Prescription for Email: {this.state.uemail} and SessionId: {this.state.sid}</p>
               <div className="row">
                 <div className="col-md-6 mb-4">
                   <div className="form-outline">
@@ -166,49 +164,6 @@ class AddPresc extends React.Component {
                           </button>
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                {this.state.data.map((ele, i) => (
-                  <div
-                    key={i}
-                    className="col-sm-6"
-                    style={{ margin: "50px", width: "220px", height: "300px" }}
-                  >
-                    <Tilt
-                      style={{
-                        margin: "30px",
-                        width: "220px",
-                        height: "300px",
-                      }}
-                    >
-                      <iframe
-                        title={i}
-                        src={ele}
-                        style={{
-                          width: "220px",
-                          height: "300px",
-                          overflow: "hidden",
-                        }}
-                        frameBorder="0"
-                        scrolling="no"
-                      ></iframe>
-                      <a
-                        href={ele}
-                        style={{
-                          position: "absolute",
-                          top: "0",
-                          left: "0",
-                          display: "inline-block",
-                          width: "220px",
-                          height: "300px",
-                          ZIndex: "5",
-                        }}
-                      >
-                        content
-                      </a>
-                    </Tilt>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

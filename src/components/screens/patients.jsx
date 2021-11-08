@@ -3,32 +3,29 @@ import { Link } from "react-router-dom";
 
 class Patients extends React.Component {
   patients_info = [
-    {
-      Name: "John Doe",
-      Text: "Example Text",
-      img: "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    },
-    {
-      Name: "John Doe",
-      Text: "Example Text",
-      img: "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    },
-    // {
-    //     "Name":"John Doe",
-    //     "Text":"Example Text",
-    //     "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    // },
-    // {
-    //     "Name":"John Doe",
-    //     "Text":"Example Text",
-    //     "img": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c",
-    // },
   ];
   constructor(props) {
     super(props);
     this.state = {
       data: this.patients_info,
+      u:JSON.parse(localStorage.getItem("user"))
     };
+  }
+  componentDidMount=()=>{
+    fetch("https://shrink4shrink.herokuapp.com/api/get_patient",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+        this.setState({
+          data: resp
+        });
+    });
   }
   render() {
     return (
@@ -49,39 +46,35 @@ class Patients extends React.Component {
         <div className="container-fluid" id="main">
           <div className="row row-offcanvas row-offcanvas-left">
             <div
-              className="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0"
+              className="col-md-3 col-lg-2 sidebar-offcanvas pl-0"
               id="sidebar"
               role="navigation"
+              style={{ backgroundColor: "#171010" }}
             >
               <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
                 <li className="nav-item">
-                  <a className="nav-link" href="/dashboard">
-                    Home
+                  <a className="nav-link text-light" href="/dashboarddoc">
+                    Homepage
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/upcoming-sessions">
+                  <a className="nav-link text-light" href="/upcoming-sessions">
                     Upcoming Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/previous-sessions">
+                  <a className="nav-link text-light" href="/previous-sessions">
                     Previous Sessions
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/routines">
-                    Routines
+                  <a className="nav-link text-light" href="/patients">
+                    Patients
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/prescriptions">
-                    Prescriptions
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/find-doctor">
-                    Find Doctor
+                  <a className="nav-link text-light" href="/addpresc">
+                    Add Prescriptions
                   </a>
                 </li>
               </ul>
@@ -92,11 +85,14 @@ class Patients extends React.Component {
                   <div className="col-md-4 mt-4">
                     <div className="card profile-card-5">
                       <div className="card-img-block">
-                        <img className="card-img-top" src={ele.img} alt="img" />
+                        <img className="card-img-top" src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c" alt="img" />
                       </div>
                       <div className="card-body">
-                        <h4 className="card-title">{ele.Name}</h4>
-                        <p className="card-text">{ele.Text}.</p>
+                        <h4 className="card-title">{ele.firstname} {ele.lastname}</h4>
+                        <p className="card-text">{ele.dob}</p>
+                        <p className="card-text">{ele.address} {ele.city} {ele.pincode}</p>
+                        <p className="card-text">{ele.state}</p>
+                        <p className="card-text">{ele.phone}</p>
                         <a href="/dashboard" className="btn btn-primary">
                           See Profile
                         </a>

@@ -3,7 +3,7 @@ import {} from "react-bootstrap";
 import { Route } from "react-router-dom";
 import "./App.css";
 import VideoCall from "./components/screens/agora/VideoCall";
-import Dashboard from "./components/screens/Dashboard";
+import Dashboard from "./components/screens/dashboard";
 import dashboarddoc from "./components/screens/dashboarddoc";
 import FindDoctor from "./components/screens/find_doctor";
 import form from "./components/screens/initialform";
@@ -66,7 +66,7 @@ function App() {
         <Route path="/routines" exact component={Routines} />
       </section>
       <section>
-        <Route path="/addpresc" exact component={AddPresc} />
+        <Route path="/addpresc/:email/:sid" exact component={AddPresc} />
       </section>
       <section>
         <Route exact path="/call/:sessionId" component={VideoCall} />
