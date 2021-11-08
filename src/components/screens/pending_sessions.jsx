@@ -1,43 +1,80 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class FindDoctor extends React.Component {
+class PendingSessions extends React.Component {
   handleSignOut() {
     localStorage.removeItem("user");
   }
-  doctor_info = [];
+  previous_sessions = [];
+
   constructor(props) {
     super(props);
     this.state = {
-      data: this.doctor_info,
+      data: this.previous_sessions,
       u:JSON.parse(localStorage.getItem("user"))
     };
   }
+   
   componentDidMount=()=>{
-    console.log(this.state.u)
-    fetch("https://shrink4shrink.herokuapp.com/api/get_doctors",{
-      method:"post",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        email:this.state.u.email,
+    console.log(this.state.u.email);
+    fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+        method:"post",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+            email:this.state.u.email,
+            upcoming:"true",
+            doctor:"true",      
+    }),
+  })
+  .then((response) => response.json())
+  .then((resp) => {
+      console.log(resp);
+      this.setState({
+        data: resp
+      });
+  });
+}
+
+  accept(e){
+    const sessionId =  e.target.title;
+    console.log(sessionId);
+    console.log(e.target.value);
+    const user_email = e.target.value;
+    fetch("https://shrink4shrink.herokuapp.com/api/session_status",{
+          method:"post",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({
+              email:user_email,
+              id:sessionId,
+              status:'1',      
       }),
     })
     .then((response) => response.json())
     .then((resp) => {
-        console.log(resp);
-        this.setState({
-          data: resp
-        });
-        console.log(this.state.data);
+      alert(resp);
     });
   }
 
-  seeProfile=(e)=>{
-    var email=e.target.title;
-    console.log(email);
-    this.props.history.push("/doctor/"+email);
-  }
-  render() {
+reject(e){
+  const sessionId =  e.target.title;
+  const user_email = e.target.value;
+  console.log(sessionId);
+  fetch("https://shrink4shrink.herokuapp.com/api/session_status",{
+        method:"post",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+            email:user_email,
+            id:sessionId,
+            status:'-1',      
+    }),
+})
+.then((response) => response.json())
+  .then((resp) => {
+      alert(resp);
+  });
+}
+
+ render() {
     return (
       <div>
         <nav className="navbar navbar-dark bg-dark">
@@ -46,7 +83,7 @@ class FindDoctor extends React.Component {
               s4s
             </a>
             <form className="d-flex">
-              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut}>
+              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
                 {" "}
                 Logout
               </Link>
@@ -97,29 +134,30 @@ class FindDoctor extends React.Component {
                     Find Doctor
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/pending-session">
+                    Pending Sessions
+                  </a>
+                </li>
               </ul>
             </div>
             <div
               className="col main pt-5 mt=3 border border-dark"
               style={{ backgroundColor: "#FAF3F3" }}
             >
-              <h1 className="text-dark">Find Doctor</h1>
+              <h1 className="text-dark">Pending Session Requests</h1>
               <div className="row">
-                {this.state.data.map((ele,i) => (
-                  <div key={i} className="col-md-4 col-lg-4 col-sm-12 mt-4">
-                    <div className="card profile-card-5">
-                      <div className="card-img-block">
-                        <img className="card-img-top" src={ele.picture} alt="img" />
+                {this.state.data.map((ele) => (
+                (ele.status==='0')?(<div className="col-sm-6">
+                      <div className="ses-info">
+                        <h1>{ele.title}</h1>
+                        <p>{ele.user}</p>
+                        <p>{ele.date}</p>
+                        <p>{ele.time}</p>
+                        <button value={this.state.u.email} title={ele._id}  onClick={this.accept}>Yes</button>
+                        <button title={ele._id} onClick={this.reject}>No</button>
                       </div>
-                      <div className="card-body">
-                        <h4 className="card-title">Dr.{ele.firstname} {ele.lastname}</h4>
-                        <p className="card-text">{ele.username}</p>
-                        <button className="btn btn-primary" style={{marginLeft:"10px"}} title={ele.username} onClick={this.seeProfile}>
-                          See Profile
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  </div>):<div></div>
                 ))}
               </div>
             </div>
@@ -130,4 +168,4 @@ class FindDoctor extends React.Component {
   }
 }
 
-export default FindDoctor;
+export default PendingSessions;
