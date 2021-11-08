@@ -20,19 +20,19 @@ class DoctorProfile extends React.Component {
                 email: email,
             }),
         })
-            .then((response) => response.json())
+        .then((response) => response.json())
             .then((resp) => {
                 console.log(resp);
                 this.setState({
                     data: resp
                 });
-                console.log(this.state.data.username);
+                console.log(this.state.data);
             });
-            console.log(this.state.data);
         };
 
     fun = (e) => {
-        console.log(this.data)
+        console.log(this.state.u.email);
+        console.log(e.target.title);
         fetch("https://shrink4shrink.herokuapp.com/api/assign_doctor", {
             method: "post",
             headers: { "Content-type": "application/json" },
@@ -42,7 +42,6 @@ class DoctorProfile extends React.Component {
             })
         })
         .then((response)=>response.json())
-            .then((response) => response.json())
             .then((resp) => {
                 console.log(resp);
                 this.props.history.push("/dashboard");

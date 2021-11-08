@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Tilt from "react-parallax-tilt";
 
 class PendingSessions extends React.Component {
   handleSignOut() {
@@ -15,24 +14,67 @@ class PendingSessions extends React.Component {
       u:JSON.parse(localStorage.getItem("user"))
     };
   }
+   
   componentDidMount=()=>{
+    console.log(this.state.u.email);
     fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
         method:"post",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
             email:this.state.u.email,
-            upcoming:"false"
+            upcoming:"true",
+            doctor:"true",      
+    }),
+  })
+  .then((response) => response.json())
+  .then((resp) => {
+      console.log(resp);
+      this.setState({
+        data: resp
+      });
+  });
+}
+
+  accept(e){
+    const sessionId =  e.target.title;
+    console.log(sessionId);
+    console.log(e.target.value);
+    const user_email = e.target.value;
+    fetch("https://shrink4shrink.herokuapp.com/api/session_status",{
+          method:"post",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({
+              email:user_email,
+              id:sessionId,
+              status:'1',      
+      }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+      alert(resp);
+    });
+  }
+
+reject(e){
+  const sessionId =  e.target.title;
+  const user_email = e.target.value;
+  console.log(sessionId);
+  fetch("https://shrink4shrink.herokuapp.com/api/session_status",{
+        method:"post",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+            email:user_email,
+            id:sessionId,
+            status:'-1',      
     }),
 })
 .then((response) => response.json())
-.then((resp) => {
-    console.log(resp);
-    this.setState({
-      data: resp
-    });
-});
+  .then((resp) => {
+      alert(resp);
+  });
 }
-  render() {
+
+ render() {
     return (
       <div>
         <nav className="navbar navbar-dark bg-dark">
@@ -92,26 +134,30 @@ class PendingSessions extends React.Component {
                     Find Doctor
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/pending-session">
+                    Pending Sessions
+                  </a>
+                </li>
               </ul>
             </div>
             <div
               className="col main pt-5 mt=3 border border-dark"
               style={{ backgroundColor: "#FAF3F3" }}
             >
-              <h1 className="text-dark">Previous Sessions</h1>
+              <h1 className="text-dark">Pending Session Requests</h1>
               <div className="row">
-                {this.state.data.map((ele,i) => (
-                <div key={i} className="col-sm-6">
-                    <Tilt>
+                {this.state.data.map((ele) => (
+                (ele.status==='0')?(<div className="col-sm-6">
                       <div className="ses-info">
                         <h1>{ele.title}</h1>
+                        <p>{ele.user}</p>
                         <p>{ele.date}</p>
                         <p>{ele.time}</p>
-                        <button>Yes</button>
-                        <button>No</button>
+                        <button value={this.state.u.email} title={ele._id}  onClick={this.accept}>Yes</button>
+                        <button title={ele._id} onClick={this.reject}>No</button>
                       </div>
-                    </Tilt>
-                  </div>
+                  </div>):<div></div>
                 ))}
               </div>
             </div>
