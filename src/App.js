@@ -19,6 +19,10 @@ import Routines from "./components/screens/routines";
 import AddPresc from "./components/screens/addpresc";
 import UpcomingSessions from "./components/screens/upcoming_sessions";
 import DoctorProfile from "./components/screens/doctor_profile";
+import PatientFeedback from "./components/screens/patient-feedback";
+import DoctorFeedback from "./components/screens/doctor-feedback";
+import PendingSessions from "./components/screens/pending_sessions";
+import AdminPanel from "./components/screens/admin_panel";
 
 function App() {
   return (
@@ -73,6 +77,18 @@ function App() {
       </section>
       <section>
         <Route path="/doctor/:name" component={DoctorProfile}/>
+      </section>
+      <section>
+        <Route path="/patient-feedback" exact component={PatientFeedback}/>
+      </section>
+      <section>
+        <Route path="/doctor-feedback" exact component={DoctorFeedback}/>
+      </section>
+      <section>
+        <Route path="/pending-session" exact component={PendingSessions}/>
+      </section>
+      <section>
+        <Route path="admin-panel" exact component={AdminPanel}/>
       </section>
     </div>
   );

@@ -26,7 +26,7 @@ class DoctorProfile extends React.Component{
             this.setState({
             data: resp
             });
-            console.log(this.state.data.username);
+            console.log(this.state.data);
         });
     }
 
@@ -39,6 +39,7 @@ class DoctorProfile extends React.Component{
                 doctor_email:this.props.match.params.name,
             })
         })
+        .then((response)=>response.json())
     }
 
     render(){

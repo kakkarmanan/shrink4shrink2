@@ -1,42 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Tilt from "react-parallax-tilt";
 
-class FindDoctor extends React.Component {
+class PendingSessions extends React.Component {
   handleSignOut() {
     localStorage.removeItem("user");
   }
-  doctor_info = [];
+  previous_sessions = [];
+
   constructor(props) {
     super(props);
     this.state = {
-      data: this.doctor_info,
+      data: this.previous_sessions,
       u:JSON.parse(localStorage.getItem("user"))
     };
   }
   componentDidMount=()=>{
-    console.log(this.state.u)
-    fetch("https://shrink4shrink.herokuapp.com/api/get_doctors",{
-      method:"post",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        email:this.state.u.email,
-      }),
-    })
-    .then((response) => response.json())
-    .then((resp) => {
-        console.log(resp);
-        this.setState({
-          data: resp
-        });
-        console.log(this.state.data);
+    fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+        method:"post",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+            email:this.state.u.email,
+            upcoming:"false"
+    }),
+})
+.then((response) => response.json())
+.then((resp) => {
+    console.log(resp);
+    this.setState({
+      data: resp
     });
-  }
-
-  seeProfile=(e)=>{
-    var email=e.target.title;
-    console.log(email);
-    this.props.history.push("/doctor/"+email);
-  }
+});
+}
   render() {
     return (
       <div>
@@ -46,7 +41,7 @@ class FindDoctor extends React.Component {
               s4s
             </a>
             <form className="d-flex">
-              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut}>
+              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
                 {" "}
                 Logout
               </Link>
@@ -103,22 +98,19 @@ class FindDoctor extends React.Component {
               className="col main pt-5 mt=3 border border-dark"
               style={{ backgroundColor: "#FAF3F3" }}
             >
-              <h1 className="text-dark">Find Doctor</h1>
+              <h1 className="text-dark">Previous Sessions</h1>
               <div className="row">
                 {this.state.data.map((ele,i) => (
-                  <div key={i} className="col-md-4 col-lg-4 col-sm-12 mt-4">
-                    <div className="card profile-card-5">
-                      <div className="card-img-block">
-                        <img className="card-img-top" src={ele.picture} alt="img" />
+                <div key={i} className="col-sm-6">
+                    <Tilt>
+                      <div className="ses-info">
+                        <h1>{ele.title}</h1>
+                        <p>{ele.date}</p>
+                        <p>{ele.time}</p>
+                        <button>Yes</button>
+                        <button>No</button>
                       </div>
-                      <div className="card-body">
-                        <h4 className="card-title">Dr.{ele.firstname} {ele.lastname}</h4>
-                        <p className="card-text">{ele.username}</p>
-                        <button className="btn btn-primary" style={{marginLeft:"10px"}} title={ele.username} onClick={this.seeProfile}>
-                          See Profile
-                        </button>
-                      </div>
-                    </div>
+                    </Tilt>
                   </div>
                 ))}
               </div>
@@ -130,4 +122,4 @@ class FindDoctor extends React.Component {
   }
 }
 
-export default FindDoctor;
+export default PendingSessions;

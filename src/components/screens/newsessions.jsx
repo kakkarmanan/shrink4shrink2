@@ -130,9 +130,9 @@ class newsession extends React.Component {
                               </label>
                             </div>
                           </div>
-            <div className="form-helper">
+                          <div className="form-helper">
                           <div className="col-md-6 mb-4">
-            <div className="form-outline mb-4">
+                          <div className="form-outline mb-4">
                           <input
                             type="date"
                             id="form3Example9"
@@ -150,9 +150,9 @@ class newsession extends React.Component {
                         </div>
                         <div className="col-md-6 mb-4">
                         <div className="form-outline mb-4">
-  <input type="time" name="time" value={data.time} onChange={this.onChange} id="inputMDEx1" className="form-control" style={{width:"40%"}}/>
-  <label for="inputMDEx1">Choose your time</label>
-</div>
+                          <input type="time" name="time" value={data.time} onChange={this.onChange} id="inputMDEx1" className="form-control" style={{width:"40%"}}/>
+                          <label for="inputMDEx1">Choose your time</label>
+                        </div>
                         </div>
                         <div className="d-flex pt-3">
                           <button
