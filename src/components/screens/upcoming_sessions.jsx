@@ -17,12 +17,14 @@ class UpcomingSessions extends React.Component {
     };
   }
   componentDidMount=()=>{
-        fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+    if(this.state.u.doctor){
+      fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
             method:"post",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify({
                 email:this.state.u.email,
-                upcoming:"true"
+                upcoming:"true",
+                doctor:"true"
         }),
     })
     .then((response) => response.json())
@@ -32,36 +34,56 @@ class UpcomingSessions extends React.Component {
           data: resp
         });
     });
+    }
+        else{
+          fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email,
+                upcoming:"true",
+                doctor:"false"
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+        this.setState({
+          data: resp
+        });
+    });
+        }
   }
 
   render() {
-    return (
-      <div>
-        <nav className="navbar navbar-dark bg-dark">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="/">
-              s4s
-            </a>
-            <form className="d-flex">
-              <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
-                {" "}
-                Logout
-              </Link>
-            </form>
-          </div>
-        </nav>
-        <div className="container-fluid" id="main">
-          <div className="row row-offcanvas row-offcanvas-left">
-            <div
-              className="col-md-3 col-lg-2 sidebar-offcanvas pl-0"
-              id="sidebar"
-              role="navigation"
-              style={{ backgroundColor: "#171010" }}
-            >
-              <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
+    if(this.state.u.doctor){
+      return (
+        <div>
+          <nav className="navbar navbar-dark bg-dark">
+            <div className="container-fluid">
+              <a className="navbar-brand" href="/">
+                s4s
+              </a>
+              <form className="d-flex">
+                <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
+                  {" "}
+                  Logout
+                </Link>
+              </form>
+            </div>
+          </nav>
+          <div className="container-fluid" id="main">
+            <div className="row row-offcanvas row-offcanvas-left">
+              <div
+                className="col-md-3 col-lg-2 sidebar-offcanvas pl-0"
+                id="sidebar"
+                role="navigation"
+                style={{ backgroundColor: "#171010" }}
+              >
+                <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="/dashboard">
-                    Home
+                  <a className="nav-link text-light" href="/dashboarddoc">
+                    Homepage
                   </a>
                 </li>
                 <li className="nav-item">
@@ -75,51 +97,129 @@ class UpcomingSessions extends React.Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="/routines">
-                    Routines
+                  <a className="nav-link text-light" href="/patients">
+                    Patients
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="/prescriptions">
-                    Prescriptions
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/newsession">
-                    New Session
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/find-doctor">
-                    Find Doctor
+                  <a className="nav-link text-light" href="/addpresc">
+                    Add Prescriptions
                   </a>
                 </li>
               </ul>
-            </div>
-            <div
-              className="col main pt-5 mt=3 border border-dark"
-              style={{ backgroundColor: "#FAF3F3" }}
-            >
-              <h1 className="text-dark">Upcoming Sessions</h1>
-              <div className="row">
-                {this.state.data.map((ele,i) => (
-                  <div key={i} className="col-sm-6">
-                    <Tilt>
-                      <div className="ses-info">
-                        <h1>{ele.title}</h1>
-                        <p>{ele.date}</p>
-                        <p>{ele.time}</p>
-                        <p>{ele.Outcome}</p>
-                      </div>
-                    </Tilt>
-                  </div>
-                ))}
+              </div>
+              <div
+                className="col main pt-5 mt=3 border border-dark"
+                style={{ backgroundColor: "#FAF3F3" }}
+              >
+                <h1 className="text-dark">Upcoming Sessions</h1>
+                <div className="row">
+                  {this.state.data.map((ele,i) => (
+                    <div key={i} className="col-sm-6">
+                      <Tilt>
+                        <div className="ses-info">
+                          <h1>{ele.title}</h1>
+                          <p>{ele.date}</p>
+                          <p>{ele.time}</p>
+                          <p>{ele.Outcome}</p>
+                        </div>
+                      </Tilt>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else{
+      return (
+        <div>
+          <nav className="navbar navbar-dark bg-dark">
+            <div className="container-fluid">
+              <a className="navbar-brand" href="/">
+                s4s
+              </a>
+              <form className="d-flex">
+                <Link to="/" className="button btn btn-outline-success me-2" onClick={this.handleSignOut} >
+                  {" "}
+                  Logout
+                </Link>
+              </form>
+            </div>
+          </nav>
+          <div className="container-fluid" id="main">
+            <div className="row row-offcanvas row-offcanvas-left">
+              <div
+                className="col-md-3 col-lg-2 sidebar-offcanvas pl-0"
+                id="sidebar"
+                role="navigation"
+                style={{ backgroundColor: "#171010" }}
+              >
+                <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
+                  <li className="nav-item">
+                    <a className="nav-link text-light" href="/dashboard">
+                      Home
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link text-light" href="/upcoming-sessions">
+                      Upcoming Sessions
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link text-light" href="/previous-sessions">
+                      Previous Sessions
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link text-light" href="/routines">
+                      Routines
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link text-light" href="/prescriptions">
+                      Prescriptions
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link text-light" href="/newsession">
+                      New Session
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link text-light" href="/find-doctor">
+                      Find Doctor
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                className="col main pt-5 mt=3 border border-dark"
+                style={{ backgroundColor: "#FAF3F3" }}
+              >
+                <h1 className="text-dark">Upcoming Sessions</h1>
+                <div className="row">
+                  {this.state.data.map((ele,i) => (
+                    <div key={i} className="col-sm-6">
+                      <Tilt>
+                        <div className="ses-info">
+                          <h1>{ele.title}</h1>
+                          <p>{ele.date}</p>
+                          <p>{ele.time}</p>
+                          <p>{ele.Outcome}</p>
+                        </div>
+                      </Tilt>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 

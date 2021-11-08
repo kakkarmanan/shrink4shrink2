@@ -13,7 +13,7 @@ const VideoCall = (props) => {
   useEffect(() => {
     const init = async () => {
       let data = await fetch(
-        `http://localhost:3001/api/agora-call/token?channel=${sessionId}`
+        `https://shrink4shrink.herokuapp.com/api/agora-call/token?channel=${sessionId}`
       );
       data = await data.json();
       console.log(data);
@@ -27,15 +27,17 @@ const VideoCall = (props) => {
   return (
     <>
       {inCall && token ? (
-        <Video
-          useClient={useClient}
-          useMicrophoneAndCameraTracks={useMicrophoneAndCameraTracks}
-          appId={appId}
-          token={token}
-          inCall={inCall}
-          setInCall={setInCall}
-          channelName={sessionId}
-        />
+        <>
+          <Video
+            useClient={useClient}
+            useMicrophoneAndCameraTracks={useMicrophoneAndCameraTracks}
+            appId={appId}
+            token={token}
+            inCall={inCall}
+            setInCall={setInCall}
+            channelName={sessionId}
+          />
+        </>
       ) : (
         <div className="row">
           <div>

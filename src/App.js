@@ -70,13 +70,13 @@ function App() {
         <Route path="/routines" exact component={Routines} />
       </section>
       <section>
-        <Route path="/addpresc" exact component={AddPresc} />
+        <Route path="/addpresc/:email/:sid" exact component={AddPresc} />
       </section>
       <section>
         <Route exact path="/call/:sessionId" component={VideoCall} />
       </section>
       <section>
-        <Route path="/doctor/:name" component={DoctorProfile}/>
+        <Route path="/doctor/:name" component={DoctorProfile} />
       </section>
       <section>
         <Route path="/patient-feedback" exact component={PatientFeedback}/>
