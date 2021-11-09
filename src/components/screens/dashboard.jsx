@@ -24,7 +24,7 @@ const Dashboard = (props) => {
       );
       data = await data.json();
       setLatestSession(data[0]);
-      console.log(data[0])
+      console.log(data)
       const date = new Date(Date.now());
       if (
         data.length > 0 &&
@@ -184,9 +184,9 @@ const Dashboard = (props) => {
                   <div className="col-sm-8">
                     <h1>Upcoming Sessions</h1>
                     <p>{latestSession && latestSession.title}</p>
-                    <p>Date: {latestSession.date}</p>
-                    <p>Duration: {latestSession.time}</p>
-                    <p>Outcome: -</p>
+                    <p>Date: 12-01-2021</p>
+                    <p>Duration: 50 min</p>
+                    <p>Outcome: Due to reason</p>
                   </div>
                   {join && (
                     <button
