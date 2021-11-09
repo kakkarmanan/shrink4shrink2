@@ -88,7 +88,7 @@ function App() {
         <Route path="/pending-session" exact component={PendingSessions}/>
       </section>
       <section>
-        <Route path="admin-panel" exact component={AdminPanel}/>
+        <Route path="/admin-panel" exact component={AdminPanel}/>
       </section>
     </div>
   );
