@@ -28,6 +28,7 @@ class Routines extends React.Component {
     super(props);
     this.state = {
       data: this.routines,
+      date:"",
       selectedFile: null,
     };
   }
@@ -57,6 +58,17 @@ class Routines extends React.Component {
         this.setState({
           data: [...this.state.data, res],
         });
+        var d = new Date(Date.now()),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+      this.setState({date:[year, month, day].join('-')});
+      console.log(this.state.date);
         // setTimeout(()=>{},5000);
       } catch (err) {
         console.log(err);
