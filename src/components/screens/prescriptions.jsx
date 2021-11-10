@@ -3,8 +3,35 @@ import { Link } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
 
 class Prescriptions extends React.Component {
+  prescriptions = [
+  ];
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.prescriptions,
+      u:JSON.parse(localStorage.getItem("user"))
+    };
+  }
   handleSignOut() {
     localStorage.removeItem("user");
+  }
+  componentDidMount=()=>{
+    fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email,
+                upcoming:"false",
+                doctor:"false"
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+        this.setState({
+          data: resp
+        });
+    });
   }
   render() {
     return (
@@ -74,9 +101,10 @@ class Prescriptions extends React.Component {
             >
               <h1 className="text-dark">Prescriptions</h1>
               <div className="row">
-                {[1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => {
+                {this.state.data.map((ele, i) => {
                   return (
                     <div
+                    key={i}
                       className="col-sm-6"
                       style={{
                         margin: "30px",
@@ -94,29 +122,31 @@ class Prescriptions extends React.Component {
                         <iframe
                           key={i}
                           title={i}
-                          src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f"
+                          src={ele.prescription}
                           style={{
                             width: "220px",
                             height: "300px",
                             overflow: "hidden",
                           }}
-                          frameborder="0"
+                          frameBorder="0"
                           scrolling="no"
                         ></iframe>
                         <a
-                          href="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f"
+                          href={ele.prescription}
+                          className="text-dark fw-bold"
                           style={{
                             position: "absolute",
-                            top: "0",
-                            left: "0",
+                            top:"5px",
+                            left: "10px",
                             display: "inline-block",
                             width: "220px",
                             height: "300px",
                             ZIndex: "5",
                           }}
                         >
-                          content
+                          Date: {ele.date}
                         </a>
+                        <label>Doctor: {ele.doctor}</label>
                       </Tilt>
                     </div>
                   );
