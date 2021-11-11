@@ -115,16 +115,17 @@ class UpcomingSessions extends React.Component {
                 <h1 className="text-dark">Upcoming Sessions</h1>
                 <div className="row">
                   {this.state.data.map((ele,i) => (
-                    (ele.status==='1')?(<div key={i} className="col-sm-6">
+                    <div key={i} className="col-sm-6">
                     <Tilt>
                       <div className="ses-info">
                         <h1>{ele.title}</h1>
+                        <p style={{color:ele.status==='1'?"green":(ele.status==='-1'?"red":"black")}}></p>
                         <p>{ele.date}</p>
                         <p>{ele.time}</p>
                         <p>{ele.Outcome}</p>
                       </div>
                     </Tilt>
-                  </div>):(<div></div>)
+                  </div>
                   ))}
                 </div>
               </div>
@@ -201,17 +202,18 @@ class UpcomingSessions extends React.Component {
               >
                 <h1 className="text-dark">Upcoming Sessions</h1>
                 <div className="row">
-                  {this.state.data.map((ele,i) => (
-                    (ele.status==='1')?(<div key={i} className="col-sm-6">
-                      <Tilt>
-                        <div className="ses-info">
-                          <h1>{ele.title}</h1>
-                          <p>{ele.date}</p>
-                          <p>{ele.time}</p>
-                          <p>{ele.Outcome}</p>
-                        </div>
-                      </Tilt>
-                    </div>):(<div></div>)
+                {this.state.data.map((ele,i) => (
+                    <div key={i} className="col-sm-6">
+                    <Tilt>
+                      <div className="ses-info">
+                        <h1>{ele.title}</h1>
+                        <p style={{color:ele.status==='1'?"green":ele.status==='-1'?"red":"yellow"}}></p>
+                        <p>{ele.date}</p>
+                        <p>{ele.time}</p>
+                        <p>{ele.Outcome}</p>
+                      </div>
+                    </Tilt>
+                  </div>
                   ))}
                 </div>
               </div>
