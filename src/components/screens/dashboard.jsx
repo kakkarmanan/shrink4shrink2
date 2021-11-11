@@ -101,6 +101,11 @@ const Dashboard = (props) => {
                   Find Doctor
                 </a>
               </li>
+              <li className="nav-item">
+                  <a className="nav-link text-light" href="/user-profile">
+                    Profile
+                  </a>
+                </li>
             </ul>
           </div>
 
