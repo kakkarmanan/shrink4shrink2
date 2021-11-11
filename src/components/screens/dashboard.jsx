@@ -25,7 +25,7 @@ const Dashboard = (props) => {
       );
       data = await data.json();
       setLatestSession(data[0]);
-      console.log(data)
+      console.log(data);
       const date = new Date(Date.now());
       if (
         data.length > 0 &&

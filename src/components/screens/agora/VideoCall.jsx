@@ -20,10 +20,11 @@ const VideoCall = (props) => {
       setToken(data.token);
     };
     init();
-  }, [sessionId]);
-  const onClickHandler = () => {
     setInCall(true);
-  };
+  }, [sessionId]);
+  // const onClickHandler = () => {
+
+  // };
   return (
     <>
       {inCall && token ? (
@@ -40,14 +41,14 @@ const VideoCall = (props) => {
         </>
       ) : (
         <div className="row">
-          <div>
-            <button onClick={onClickHandler} type="button" id="join">
+          {/* <div>
+            <button onCli} type="button" id="join">
               JOIN
             </button>
             <button onClick={null} type="button" id="leave">
               LEAVE
             </button>
-          </div>
+          </div> */}
         </div>
       )}
     </>
