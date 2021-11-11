@@ -2,6 +2,7 @@ import { AgoraVideoPlayer } from "agora-rtc-react";
 import React, { useEffect, useState } from "react";
 import recognizeMic from "watson-speech/speech-to-text/recognize-microphone";
 import firebase from "../../../firebase";
+import Controls from "./Controls";
 
 const storageRef = firebase.storage().ref();
 
@@ -106,13 +107,13 @@ const Video = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inCall]);
   const generateReport = async () => {
-    let data = await fetch("/api/notes", {
+    let data = await fetch(`http://localhost:3001/api/summary`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: text,
+        text: text.join(", "),
       }),
     });
     data = await data.json();
@@ -137,11 +138,27 @@ const Video = ({
         {tracks && (
           <AgoraVideoPlayer
             videoTrack={tracks[1]}
-            style={{ height: "480px", width: "640px" }}
-          />
+            style={{
+              height: "480px",
+              width: "640px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {ready && tracks && (
+              <Controls
+                tracks={tracks}
+                setStart={setStart}
+                setInCall={setInCall}
+                client={client}
+              />
+            )}
+          </AgoraVideoPlayer>
         )}
         {users.length > 0 &&
           users.map((user, i) => {
+            console.log(users);
             return (
               <AgoraVideoPlayer
                 key={user.uid}
@@ -152,7 +169,12 @@ const Video = ({
           })}
       </div>
       <div style={{ fontSize: "30px" }}>{text.toString()}</div>
-      <button onClick={generateReport} type="button" class="btn btn-success">
+      <button
+        onClick={generateReport}
+        style={{ marginTop: 20 }}
+        type="button"
+        class="btn btn-success"
+      >
         Success
       </button>
     </div>
