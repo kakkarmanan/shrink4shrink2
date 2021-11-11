@@ -8,11 +8,51 @@ class dashboarddoc extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      u:JSON.parse(localStorage.getItem("user"))
+      u:JSON.parse(localStorage.getItem("user")),
+      nudsns:0,
+      npdsns:0,
+      latest:null,
+      last:null
     }
   }
   handleSignOut() {
     localStorage.removeItem("user");
+  }
+  componentDidMount=()=>{
+    fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email,
+                upcoming:"true",
+                doctor:"true"
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+        this.setState({
+          nudns: resp.length,
+          latest:resp[0]
+        });
+    });
+    fetch("https://shrink4shrink.herokuapp.com/api/usersessions",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email,
+                upcoming:"false",
+                doctor:"true"
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp1) => {
+        console.log(resp1);
+        this.setState({
+          npdsns: resp1.length,
+          last:resp1[0]
+        });
+    });
   }
   render() {
     return (
@@ -99,7 +139,7 @@ class dashboarddoc extends React.Component {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Sessions</h6>
-                      <h1 className="display-4">134</h1>
+                      <h1 className="display-4">{(this.state.last || this.state.latest)&&this.state.npdsns+this.state.nudns}</h1>
                     </div>
                   </div>
                 </div>
@@ -110,7 +150,7 @@ class dashboarddoc extends React.Component {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Upcoming Session</h6>
-                      <h1 className="display-4">12-01-2021, Tuesday</h1>
+                      <h1 className="display-4">Date:{this.state.latest && this.state.latest.date}</h1>
                     </div>
                   </div>
                 </div>
@@ -121,7 +161,7 @@ class dashboarddoc extends React.Component {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Previous Session</h6>
-                      <h1 className="display-4">12-01-2021, Tuesday</h1>
+                      <h1 className="display-4">Date:{this.state.last && this.state.last.date}</h1>
                     </div>
                   </div>
                 </div>
@@ -130,46 +170,17 @@ class dashboarddoc extends React.Component {
                 <div className="col-sm-6">
                   <div className="ses-info">
                     <h1>Previous Sessions</h1>
-                    <p>Session about panic</p>
-                    <p>Date: 12-01-2021</p>
-                    <p>Duration: 50 min</p>
-                    <p>Outcome: Due to reason</p>
+                    <p>{this.state.last && this.state.last.title}</p>
+                    <p>Date: {this.state.last && this.state.last.date}</p>
+                    <p>Patient: {this.state.last && this.state.last.user}</p>
                   </div>
                 </div>
                 <div className="col-sm-6">
                   <div className="ses-info">
                     <h1>Upcoming Sessions</h1>
-                    <p>Session about panic</p>
-                    <p>Date: 12-01-2021</p>
-                    <p>Duration: 50 min</p>
-                    <p>Outcome: Due to reason</p>
-                  </div>
-                </div>
-                <div className="col-sm-6">
-                  <div className="ses-info">
-                    <h1>Routines</h1>
-                    <p>Session about panic</p>
-                    <p>Date: 12-01-2021</p>
-                    <p>Duration: 50 min</p>
-                    <p>Outcome: Due to reason</p>
-                  </div>
-                </div>
-                <div className="col-sm-6">
-                  <div className="ses-info">
-                    <h1>Prescriptions</h1>
-                    <p>Session about panic</p>
-                    <p>Date: 12-01-2021</p>
-                    <p>Duration: 50 min</p>
-                    <p>Outcome: Due to reason</p>
-                  </div>
-                </div>
-                <div className="col-sm-6">
-                  <div className="ses-info">
-                    <h1>Schedule Appointment</h1>
-                    <p>Session about panic</p>
-                    <p>Date: 12-01-2021</p>
-                    <p>Duration: 50 min</p>
-                    <p>Outcome: Due to reason</p>
+                    <p>{this.state.latest && this.state.latest.title}</p>
+                    <p>Date: {this.state.latest && this.state.latest.date}</p>
+                    <p>Patient: {this.state.latest && this.state.latest.user}</p>
                   </div>
                 </div>
               </div>
