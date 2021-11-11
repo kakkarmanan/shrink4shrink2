@@ -18,17 +18,15 @@ class Routines extends React.Component {
     localStorage.removeItem("user");
   }
   routines = [
-    "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f",
-    "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f",
-    "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f",
-    "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f",
-    "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/Mess%20reciept.pdf?alt=media&token=4a6a3b00-1785-4df1-a9bc-887e5513b01f",
   ];
   constructor(props) {
     super(props);
     this.state = {
       data: this.routines,
+      date:"",
       selectedFile: null,
+      u:JSON.parse(localStorage.getItem("user")),
+      filelink:""
     };
   }
   onFile = (e) => {
@@ -54,15 +52,53 @@ class Routines extends React.Component {
         await mountainsRef.put(blob, metadata);
         const res = await mountainsRef.getDownloadURL();
         console.log(res);
-        this.setState({
-          data: [...this.state.data, res],
-        });
+        this.setState({filelink:res});
+        var d = new Date(Date.now()),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+      this.setState({date:[year, month, day].join('-')});
+      console.log(this.state.date);
+      fetch("https://shrink4shrink.herokuapp.com/api/add_routine",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email,
+                date:this.state.date,
+                link:this.state.filelink
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        alert(resp);
+    });
         // setTimeout(()=>{},5000);
       } catch (err) {
         console.log(err);
       }
     }
   };
+  componentDidMount=()=>{
+    fetch("https://shrink4shrink.herokuapp.com/api/get_routine",{
+            method:"post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email:this.state.u.email
+        }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+        console.log(resp);
+        this.setState({
+          data: resp
+        });
+    });
+  }
   render() {
     return (
       <div>
@@ -173,7 +209,7 @@ class Routines extends React.Component {
                     >
                       <iframe
                         title={i}
-                        src={ele}
+                        src={ele.link}
                         style={{
                           width: "220px",
                           height: "300px",
@@ -183,18 +219,19 @@ class Routines extends React.Component {
                         scrolling="no"
                       ></iframe>
                       <a
-                        href={ele}
+                        href={ele.link}
+                        className="text-dark fw-bold"
                         style={{
                           position: "absolute",
-                          top: "0",
-                          left: "0",
+                          top: "5px",
+                          left: "10px",
                           display: "inline-block",
                           width: "220px",
                           height: "300px",
                           ZIndex: "5",
                         }}
                       >
-                        content
+                        Date: {ele.date}
                       </a>
                     </Tilt>
                   </div>

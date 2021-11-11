@@ -15,6 +15,7 @@ const Dashboard = (props) => {
           method: "post",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://127.0.0.1:3000",
           },
           body: JSON.stringify({
             email: JSON.parse(localStorage.getItem("user")).email,
@@ -24,7 +25,7 @@ const Dashboard = (props) => {
       );
       data = await data.json();
       setLatestSession(data[0]);
-      console.log(data)
+      console.log(data);
       const date = new Date(Date.now());
       if (
         data.length > 0 &&

@@ -2,6 +2,7 @@ import { AgoraVideoPlayer } from "agora-rtc-react";
 import React, { useEffect, useState } from "react";
 import recognizeMic from "watson-speech/speech-to-text/recognize-microphone";
 import firebase from "../../../firebase";
+import Controls from "./Controls";
 
 const storageRef = firebase.storage().ref();
 
@@ -106,19 +107,30 @@ const Video = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inCall]);
   const generateReport = async () => {
-    const file = new Blob([text], {
-      type: "text/plain",
+    let data = await fetch(`http://localhost:3001/api/summary`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: text.join(", "),
+      }),
     });
-    try {
-      var mtRef = await storageRef.child(
-        "notes-" + JSON.parse(localStorage.getItem("user"))._id + ".txt"
-      );
-      await mtRef.put(file);
-      const res = await mtRef.getDownloadURL();
-      console.log(res);
-    } catch (e) {
-      console.log(e);
-    }
+    data = await data.json();
+    console.log(data);
+    // const file = new Blob([text], {
+    //   type: "text/plain",
+    // });
+    // try {
+    //   var mtRef = await storageRef.child(
+    //     "notes-" + JSON.parse(localStorage.getItem("user"))._id + ".txt"
+    //   );
+    //   await mtRef.put(file);
+    //   const res = await mtRef.getDownloadURL();
+    //   console.log(res);
+    // } catch (e) {
+    //   console.log(e);
+    // }
   };
   return (
     <div style={{ padding: "10px 5px" }}>
@@ -126,11 +138,27 @@ const Video = ({
         {tracks && (
           <AgoraVideoPlayer
             videoTrack={tracks[1]}
-            style={{ height: "480px", width: "640px" }}
-          />
+            style={{
+              height: "480px",
+              width: "640px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {ready && tracks && (
+              <Controls
+                tracks={tracks}
+                setStart={setStart}
+                setInCall={setInCall}
+                client={client}
+              />
+            )}
+          </AgoraVideoPlayer>
         )}
         {users.length > 0 &&
           users.map((user, i) => {
+            console.log(users);
             return (
               <AgoraVideoPlayer
                 key={user.uid}
@@ -141,7 +169,12 @@ const Video = ({
           })}
       </div>
       <div style={{ fontSize: "30px" }}>{text.toString()}</div>
-      <button onClick={generateReport} type="button" class="btn btn-success">
+      <button
+        onClick={generateReport}
+        style={{ marginTop: 20 }}
+        type="button"
+        class="btn btn-success"
+      >
         Success
       </button>
     </div>
