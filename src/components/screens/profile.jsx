@@ -38,7 +38,7 @@ class Profile extends React.Component{
         const name = data.firstname+" "+data.lastname;
         return(
             <div>
-                <div class="container">
+                <div class="container" style={{paddingTop:"40px"}}>
                 <div class="row gutters">
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
