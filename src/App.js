@@ -26,6 +26,7 @@ import AdminPanel from "./components/screens/admin_panel";
 import Profile from "./components/screens/profile";
 import PatientProfile from "./components/screens/patient_profile";
 import Details from "./components/screens/details";
+import Chat from "./components/screens/chat";
 
 function App() {
   return (
@@ -109,6 +110,9 @@ function App() {
       </section>
       <section>
         <Route path="/patient-profile/:name" exact component={PatientProfile}/>
+      </section>
+      <section>
+        <Route path="/chat" exact compontent ={Chat}/>
       </section>
     </div>
   );
