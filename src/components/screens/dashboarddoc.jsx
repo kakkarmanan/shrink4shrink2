@@ -107,6 +107,11 @@ class dashboarddoc extends React.Component {
                     Add Prescriptions
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/pending-session">
+                    Pending Session Requests
+                  </a>
+                </li>
               </ul>
             </div>
 

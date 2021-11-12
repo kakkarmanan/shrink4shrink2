@@ -24,6 +24,7 @@ import DoctorFeedback from "./components/screens/doctor-feedback";
 import PendingSessions from "./components/screens/pending_sessions";
 import AdminPanel from "./components/screens/admin_panel";
 import Profile from "./components/screens/profile";
+import PatientProfile from "./components/screens/patient_profile";
 
 function App() {
   return (
@@ -93,6 +94,9 @@ function App() {
       </section>
       <section>
         <Route path="/user-profile" exact component={Profile}/>
+      </section>
+      <section>
+        <Route path="/patient-profile/:name" exact component={PatientProfile}/>
       </section>
     </div>
   );
