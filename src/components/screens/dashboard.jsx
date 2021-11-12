@@ -36,7 +36,7 @@ const Dashboard = (props) => {
       if (
         data.length > 0 &&
         Number(data[0].time.split(":")[0]) === date.getHours() &&
-        date.getMinutes() - Number(data[0].time.split(":")[1]) <= 5
+        Number(data[0].time.split(":")[1])-date.getMinutes()<= 5 && Number(data[0].time.split(":")[1])-date.getMinutes() >= 0
       ) {
         setJoin(true);
       }
