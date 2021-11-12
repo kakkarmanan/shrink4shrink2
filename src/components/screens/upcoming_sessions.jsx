@@ -119,7 +119,8 @@ class UpcomingSessions extends React.Component {
                     <Tilt>
                       <div className="ses-info">
                         <h1>{ele.title}</h1>
-                        <p style={{color:ele.status==='1'?"green":(ele.status==='-1'?"red":"black")}}></p>
+                        {ele.status==="1"?(<p style={{color:'green'}}>Accepted</p>):
+                        (ele.status==="-1"?(<p style={{color:'red'}}>Rejected</p>):(<p style={{color:'#FFAF33'}}>Pending</p>))}
                         <p>{ele.date}</p>
                         <p>{ele.time}</p>
                         <p>{ele.Outcome}</p>
@@ -212,7 +213,8 @@ class UpcomingSessions extends React.Component {
                     <Tilt>
                       <div className="ses-info">
                         <h1>{ele.title}</h1>
-                        <p style={{color:ele.status==='1'?"green":ele.status==='-1'?"red":"yellow"}}></p>
+                        {ele.status==="1"?(<p style={{color:'green'}}>Accepted</p>):
+                        (ele.status==="-1"?(<p style={{color:'red'}}>Rejected</p>):(<p style={{color:'#FFAF33'}}>Pending</p>))}
                         <p>{ele.date}</p>
                         <p>{ele.time}</p>
                         <p>{ele.Outcome}</p>
