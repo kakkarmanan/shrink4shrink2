@@ -25,6 +25,7 @@ import PendingSessions from "./components/screens/pending_sessions";
 import AdminPanel from "./components/screens/admin_panel";
 import Profile from "./components/screens/profile";
 import PatientProfile from "./components/screens/patient_profile";
+import Details from "./components/screens/details";
 
 function App() {
   return (
@@ -73,6 +74,9 @@ function App() {
       </section>
       <section>
         <Route path="/addpresc/:email/:sid" exact component={AddPresc} />
+      </section>
+      <section>
+        <Route path="/details/:email/:sid" exact component={Details} />
       </section>
       <section>
         <Route exact path="/call/:sessionId" component={VideoCall} />
