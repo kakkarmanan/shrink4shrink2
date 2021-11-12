@@ -5,7 +5,14 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import CallEndIcon from "@mui/icons-material/CallEnd";
 
-const Controls = ({ tracks, setStart, setInCall, client }) => {
+const Controls = ({
+  tracks,
+  setStart,
+  setInCall,
+  client,
+  sessionId,
+  history,
+}) => {
   const [trackState, setTrackState] = useState({ video: true, audio: true });
 
   const mute = async (type) => {
@@ -30,24 +37,45 @@ const Controls = ({ tracks, setStart, setInCall, client }) => {
     tracks[1].close();
     setStart(false);
     setInCall(false);
+    history.push("/upcoming-sessions");
+  };
+
+  const endSession = async () => {
+    let data = await fetch(
+      `https://shrink4shrink.herokuapp.com/api/close_session`,
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: JSON.parse(localStorage.getItem("user")).email,
+          id: sessionId,
+        }),
+      }
+    );
+    data = await data.json();
+    if (data) {
+      history.push(`/patient-feedback/${sessionId}`);
+    }
   };
 
   return (
     <div
       className="row"
       style={{
-        width: "640px",
+        width: "100%",
+        height: "10%",
         display: "flex",
+        flex: 1,
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
-        backgroundColor: "#ccc",
+        backgroundColor: "#000",
         position: "absolute",
-        top: "70%",
-        zIndex: 100,
-        borderBottomRightRadius: "7px",
-        borderBottomLeftRadius: "7px",
-        padding: 5,
+        bottom: 0,
+        zIndex: 1,
+        marginLeft: 0,
       }}
     >
       <div
@@ -60,6 +88,7 @@ const Controls = ({ tracks, setStart, setInCall, client }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          cursor: "pointer",
         }}
         onClick={() => mute("audio")}
       >
@@ -75,6 +104,7 @@ const Controls = ({ tracks, setStart, setInCall, client }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          cursor: "pointer",
         }}
         onClick={() => mute("video")}
       >
@@ -90,10 +120,34 @@ const Controls = ({ tracks, setStart, setInCall, client }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          cursor: "pointer",
         }}
         onClick={() => leaveChannel()}
       >
         <CallEndIcon />
+      </div>
+      <div
+        style={{
+          height: 40,
+          width: 95,
+          backgroundColor: "tomato",
+          borderRadius: 5,
+          display: "flex",
+        }}
+        onClick={endSession}
+      >
+        <p
+          style={{
+            fontSize: 13,
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 7,
+            color: "#fff",
+            cursor: "pointer",
+          }}
+        >
+          End Session
+        </p>
       </div>
     </div>
   );

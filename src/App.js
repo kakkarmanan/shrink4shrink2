@@ -79,10 +79,18 @@ function App() {
         <Route path="/doctor/:name" component={DoctorProfile} />
       </section>
       <section>
-        <Route path="/patient-feedback" exact component={PatientFeedback} />
+        <Route
+          path="/patient-feedback/:sessionId"
+          exact
+          component={PatientFeedback}
+        />
       </section>
       <section>
-        <Route path="/doctor-feedback" exact component={DoctorFeedback} />
+        <Route
+          path="/doctor-feedback/:sessionId"
+          exact
+          component={DoctorFeedback}
+        />
       </section>
       <section>
         <Route path="/pending-session" exact component={PendingSessions} />

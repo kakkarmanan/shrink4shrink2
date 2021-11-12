@@ -5,6 +5,7 @@ import Video from "./Video";
 const config = { mode: "rtc", codec: "vp8" };
 const appId = "370cc8b63bac46d381f17915984b033d";
 const VideoCall = (props) => {
+  console.log(props);
   const { sessionId } = props.match.params;
   const useClient = createClient(config);
   const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
@@ -37,6 +38,8 @@ const VideoCall = (props) => {
             inCall={inCall}
             setInCall={setInCall}
             channelName={sessionId}
+            sessionId={sessionId}
+            history={props.history}
           />
         </>
       ) : (

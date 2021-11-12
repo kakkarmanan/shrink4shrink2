@@ -14,10 +14,13 @@ const Video = ({
   setInCall,
   appId,
   token,
+  sessionId,
+  history,
 }) => {
   const [users, setUsers] = useState([]);
   const [, setStart] = useState(false);
   const [text, setText] = useState([""]);
+  const [displayText, setDisplayText] = useState([""]);
   const client = useClient();
   let endpoint = "https://shrink4shrink.herokuapp.com";
   // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
@@ -32,7 +35,7 @@ const Video = ({
         console.log("subscribe success");
         if (mediaType === "video") {
           setUsers((prevUsers) => {
-            return [...prevUsers, user];
+            return [user];
           });
           console.log(users);
         }
@@ -92,6 +95,9 @@ const Video = ({
               setText((prev) => {
                 return [...prev, data.alternatives[0].transcript];
               });
+              setDisplayText((prev) => {
+                return [...prev, data.alternatives[0].transcript];
+              });
             }
             console.log(data);
           });
@@ -107,7 +113,8 @@ const Video = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inCall]);
   const generateReport = async () => {
-    let data = await fetch(`http://localhost:3001/api/summary`, {
+    console.log(text);
+    let data = await fetch(`https://shrink4shrink.herokuapp.com/api/summary`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -118,57 +125,93 @@ const Video = ({
     });
     data = await data.json();
     console.log(data);
-    // const file = new Blob([text], {
-    //   type: "text/plain",
-    // });
-    // try {
-    //   var mtRef = await storageRef.child(
-    //     "notes-" + JSON.parse(localStorage.getItem("user"))._id + ".txt"
-    //   );
-    //   await mtRef.put(file);
-    //   const res = await mtRef.getDownloadURL();
-    //   console.log(res);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    const file = new Blob([text], {
+      type: "text/plain",
+    });
+    let url;
+    try {
+      var mtRef = await storageRef.child(
+        "notes-" + JSON.parse(localStorage.getItem("user"))._id + ".txt"
+      );
+      await mtRef.put(file);
+      url = await mtRef.getDownloadURL();
+      console.log(url);
+    } catch (e) {
+      console.log(e);
+    }
+    let response = await fetch(
+      "https://shrink4shrink.herokuapp.com/api/add_notes",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: JSON.parse(localStorage.getItem("user")).email,
+          id: sessionId,
+          notes: url,
+        }),
+      }
+    );
+    response = response.json();
+    console.log(response);
   };
   return (
-    <div style={{ padding: "10px 5px" }}>
-      <div style={{ display: "flex", flex: 1 }}>
-        {tracks && (
-          <AgoraVideoPlayer
-            videoTrack={tracks[1]}
-            style={{
-              height: "480px",
-              width: "640px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {ready && tracks && (
-              <Controls
-                tracks={tracks}
-                setStart={setStart}
-                setInCall={setInCall}
-                client={client}
-              />
-            )}
-          </AgoraVideoPlayer>
-        )}
-        {users.length > 0 &&
-          users.map((user, i) => {
-            console.log(users);
-            return (
-              <AgoraVideoPlayer
-                key={user.uid}
-                videoTrack={user.videoTrack}
-                style={{ height: "240px", width: "320px" }}
-              />
-            );
-          })}
+    <div>
+      {tracks && (
+        <AgoraVideoPlayer
+          videoTrack={tracks[1]}
+          style={{
+            height: "100vh",
+            width: "100vw",
+            // zIndex: -1,
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        >
+          {ready && tracks && (
+            <Controls
+              tracks={tracks}
+              setStart={setStart}
+              setInCall={setInCall}
+              client={client}
+              sessionId={sessionId}
+              history={history}
+            />
+          )}
+          {users.length > 0 &&
+            users.map((user, i) => {
+              console.log(users);
+              return (
+                <AgoraVideoPlayer
+                  key={user.uid}
+                  videoTrack={user.videoTrack}
+                  style={{
+                    height: "30%",
+                    width: "320px",
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: "10%",
+                    right: 0,
+                  }}
+                />
+              );
+            })}
+        </AgoraVideoPlayer>
+      )}
+      <div
+        style={{
+          fontSize: "30px",
+          position: "absolute",
+          bottom: "10%",
+          left: 0,
+          marginLeft: "20px",
+          backgroundColor: "#000",
+        }}
+      >
+        <p style={{ color: "#fff" }}>{displayText.splice(-1, 10).join(" ")}</p>
       </div>
-      <div style={{ fontSize: "30px" }}>{text.toString()}</div>
       <button
         onClick={generateReport}
         style={{ marginTop: 20 }}
