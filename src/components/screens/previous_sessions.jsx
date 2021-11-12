@@ -64,7 +64,7 @@ details=(e)=>{
   e.preventDefault();
   const sid=e.target.id;
   const email=e.target.title;
-  this.props.history.push("/details/"+email+"/"+sid);
+  this.props.history.push("/session/"+sid);
 }
   render() {
     if(this.state.u.doctor){

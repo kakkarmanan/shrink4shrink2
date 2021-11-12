@@ -76,7 +76,7 @@ function App() {
         <Route path="/addpresc/:email/:sid" exact component={AddPresc} />
       </section>
       <section>
-        <Route path="/details/:email/:sid" exact component={Details} />
+        <Route path="/session/:sid" exact component={Details} />
       </section>
       <section>
         <Route exact path="/call/:sessionId" component={VideoCall} />

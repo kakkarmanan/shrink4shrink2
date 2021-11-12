@@ -11,12 +11,12 @@ class Details extends React.Component {
     this.state = {
       data: {},
       uemail:"",
-      sid:null
+      sid:null,
+      u:JSON.parse(localStorage.getItem("user"))
     };
   }
   componentDidMount= async ()=>{
-    console.log(this.props.match.params.email);
-    const email = this.props.match.params.email;
+    const email = this.state.u.email
     console.log(this.props.match.params.sid);
     const sid1 = this.props.match.params.sid;
     await this.setState({uemail:email,sid:sid1});

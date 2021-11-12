@@ -1,10 +1,10 @@
 import { AgoraVideoPlayer } from "agora-rtc-react";
 import React, { useEffect, useState } from "react";
 import recognizeMic from "watson-speech/speech-to-text/recognize-microphone";
-//import firebase from "../../../firebase";
+import firebase from "../../../firebase";
 import Controls from "./Controls";
 
-//const storageRef = firebase.storage().ref();
+const storageRef = firebase.storage().ref();
 
 const Video = ({
   useClient,
