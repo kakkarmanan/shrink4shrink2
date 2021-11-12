@@ -3,7 +3,7 @@ import {} from "react-bootstrap";
 import { Route } from "react-router-dom";
 import "./App.css";
 import VideoCall from "./components/screens/agora/VideoCall";
-import Dashboard from "./components/screens/Dashboard";
+import Dashboard from "./components/screens/dashboard";
 import dashboarddoc from "./components/screens/dashboarddoc";
 import FindDoctor from "./components/screens/find_doctor";
 import form from "./components/screens/initialform";
@@ -23,6 +23,9 @@ import PatientFeedback from "./components/screens/patient-feedback";
 import DoctorFeedback from "./components/screens/doctor-feedback";
 import PendingSessions from "./components/screens/pending_sessions";
 import AdminPanel from "./components/screens/admin_panel";
+import Profile from "./components/screens/profile";
+import PatientProfile from "./components/screens/patient_profile";
+import Details from "./components/screens/details";
 
 function App() {
   return (
@@ -73,6 +76,9 @@ function App() {
         <Route path="/addpresc/:email/:sid" exact component={AddPresc} />
       </section>
       <section>
+        <Route path="/details/:email/:sid" exact component={Details} />
+      </section>
+      <section>
         <Route exact path="/call/:sessionId" component={VideoCall} />
       </section>
       <section>
@@ -97,6 +103,12 @@ function App() {
       </section>
       <section>
         <Route path="/admin-panel" exact component={AdminPanel} />
+      </section>
+      <section>
+        <Route path="/user-profile" exact component={Profile}/>
+      </section>
+      <section>
+        <Route path="/patient-profile/:name" exact component={PatientProfile}/>
       </section>
     </div>
   );

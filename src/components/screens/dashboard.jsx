@@ -5,8 +5,12 @@ import Tilt from "react-parallax-tilt";
 
 const Dashboard = (props) => {
   console.log(props);
+  const u=JSON.parse(localStorage.getItem("user"));
   const [join, setJoin] = useState(false);
   const [latestSession, setLatestSession] = useState(null);
+  const [lastSession, setLastSession] = useState(null);
+  const[nusns,setnusns]=useState(0);
+  const[npsns,setnpsns]=useState(0);
   useEffect(() => {
     const func = async () => {
       let data = await fetch(
@@ -23,19 +27,43 @@ const Dashboard = (props) => {
           }),
         }
       );
+      
       data = await data.json();
-      setLatestSession(data[0]);
+      await setLatestSession(data[0]);
       console.log(data);
+      setnusns(data.length);
       const date = new Date(Date.now());
       if (
         data.length > 0 &&
         Number(data[0].time.split(":")[0]) === date.getHours() &&
-        date.getMinutes() - Number(data[0].time.split(":")[1]) <= 5
+        Number(data[0].time.split(":")[1])-date.getMinutes()<= 5 && Number(data[0].time.split(":")[1])-date.getMinutes() >= 0
       ) {
         setJoin(true);
       }
     };
+    const func1 = async () => {
+      let data1 = await fetch(
+        "https://shrink4shrink.herokuapp.com/api/usersessions",
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "http://127.0.0.1:3000",
+          },
+          body: JSON.stringify({
+            email: JSON.parse(localStorage.getItem("user")).email,
+            upcoming: "false",
+          }),
+        }
+      );
+      
+      data1 = await data1.json();
+      await setLastSession(data1[0]);
+      console.log(data1);
+      setnpsns(data1.length);
+    };
     func();
+    func1();
   }, []);
   const handleSignOut = () => {
     localStorage.removeItem("user");
@@ -102,6 +130,11 @@ const Dashboard = (props) => {
                   Find Doctor
                 </a>
               </li>
+              <li className="nav-item">
+                  <a className="nav-link text-light" href="/user-profile">
+                    Profile
+                  </a>
+                </li>
             </ul>
           </div>
 
@@ -109,7 +142,7 @@ const Dashboard = (props) => {
             className="col main pt-5 mt-3"
             style={{ backgroundColor: "#FAF3F3" }}
           >
-            <h1 className="display-4 d-none d-sm-block text-dark">UserName</h1>
+            <h1 className="display-4 d-none d-sm-block text-dark">{u.firstname} {u.lastname}</h1>
             <p className="lead d-none d-sm-block text-dark">Dashboard</p>
 
             <div
@@ -138,7 +171,7 @@ const Dashboard = (props) => {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Sessions</h6>
-                      <h1 className="display-4">134</h1>
+                      <h1 className="display-4">{nusns+npsns}</h1>
                     </div>
                   </Tilt>
                 </div>
@@ -151,7 +184,7 @@ const Dashboard = (props) => {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Upcoming Session</h6>
-                      <h1 className="display-4">12-01-2021, Tuesday</h1>
+                      <h1 className="display-4">Date: {latestSession && latestSession.date}</h1>
                     </div>
                   </div>
                 </Tilt>
@@ -164,7 +197,7 @@ const Dashboard = (props) => {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Previous Session</h6>
-                      <h1 className="display-4">12-01-2021, Tuesday</h1>
+                      <h1 className="display-4">Date: {lastSession && lastSession.date}</h1>
                     </div>
                   </div>
                 </Tilt>
@@ -174,10 +207,9 @@ const Dashboard = (props) => {
               <div className="col-sm-6">
                 <div className="ses-info">
                   <h1>Previous Sessions</h1>
-                  <p>Session about panic</p>
-                  <p>Date: 12-01-2021</p>
-                  <p>Duration: 50 min</p>
-                  <p>Outcome: Due to reason</p>
+                  <p>{lastSession && lastSession.title}</p>
+                  <p>Date: {lastSession && lastSession.date}</p>
+                  <p>Prescription: <a href={lastSession && lastSession.prescription}>Click here</a></p>
                 </div>
               </div>
               <div className="col-sm-6">
@@ -185,9 +217,8 @@ const Dashboard = (props) => {
                   <div className="col-sm-8">
                     <h1>Upcoming Sessions</h1>
                     <p>{latestSession && latestSession.title}</p>
-                    <p>Date: 12-01-2021</p>
-                    <p>Duration: 50 min</p>
-                    <p>Outcome: Due to reason</p>
+                    <p>Date: {latestSession && latestSession.date}</p>
+                    <p>  </p>
                   </div>
                   {join && (
                     <button
@@ -200,33 +231,6 @@ const Dashboard = (props) => {
                       Success
                     </button>
                   )}
-                </div>
-              </div>
-              <div className="col-sm-6">
-                <div className="ses-info">
-                  <h1>Routines</h1>
-                  <p>Session about panic</p>
-                  <p>Date: 12-01-2021</p>
-                  <p>Duration: 50 min</p>
-                  <p>Outcome: Due to reason</p>
-                </div>
-              </div>
-              <div className="col-sm-6">
-                <div className="ses-info">
-                  <h1>Prescriptions</h1>
-                  <p>Session about panic</p>
-                  <p>Date: 12-01-2021</p>
-                  <p>Duration: 50 min</p>
-                  <p>Outcome: Due to reason</p>
-                </div>
-              </div>
-              <div className="col-sm-6">
-                <div className="ses-info">
-                  <h1>Schedule Appointment</h1>
-                  <p>Session about panic</p>
-                  <p>Date: 12-01-2021</p>
-                  <p>Duration: 50 min</p>
-                  <p>Outcome: Due to reason</p>
                 </div>
               </div>
             </div>

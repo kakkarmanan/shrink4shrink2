@@ -24,7 +24,12 @@ class newsession extends React.Component {
   };
   onSchedule=(event)=>{
     event.preventDefault();
-    if(this.state.data.title.length>0 && this.state.data.date.length>0 &&this.state.data.time.length>0){
+    if(this.state.data.u.doctor_assigned==null){
+      alert("You have no doctor assigned!!  Kindly select a doctor!!")
+    }
+    else
+    {
+      if(this.state.data.title.length>0 && this.state.data.date.length>0 &&this.state.data.time.length>0){
         fetch("https://shrink4shrink.herokuapp.com/api/new_session",{
             method:"post",
             headers: { "Content-type": "application/json" },
@@ -43,6 +48,7 @@ class newsession extends React.Component {
     else{
         alert("Enter valid values");
     }
+  }
   };
   render() {
     const {data} = this.state;

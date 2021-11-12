@@ -27,6 +27,11 @@ class Patients extends React.Component {
         });
     });
   }
+  seeProfile=(e)=>{
+    var email=e.target.title;
+    console.log(email);
+    this.props.history.push("/patient-profile/"+email);
+  }
   render() {
     return (
       <div>
@@ -93,9 +98,9 @@ class Patients extends React.Component {
                         <p className="card-text">{ele.address} {ele.city} {ele.pincode}</p>
                         <p className="card-text">{ele.state}</p>
                         <p className="card-text">{ele.phone}</p>
-                        <a href="/dashboard" className="btn btn-primary">
+                        <button title={ele.email} onClick={this.seeProfile} className="btn btn-primary">
                           See Profile
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>

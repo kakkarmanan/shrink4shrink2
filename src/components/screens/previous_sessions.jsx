@@ -60,6 +60,12 @@ addpresc=(e)=>{
   const email=e.target.title;
   this.props.history.push("/addpresc/"+email+"/"+sid);
 }
+details=(e)=>{
+  e.preventDefault();
+  const sid=e.target.id;
+  const email=e.target.title;
+  this.props.history.push("/details/"+email+"/"+sid);
+}
   render() {
     if(this.state.u.doctor){
       return (
@@ -211,11 +217,13 @@ addpresc=(e)=>{
                 <div className="row">
                   {this.state.data.map((ele,i) => (
                     <div key={i} className="col-sm-6">
-                      <Tilt>
-                        <div className="ses-info">
+                      <Tilt style={{width:"250px",height:"130px",margin:"15px"}}>
+                        <div  className="ses-info" style={{width:"250px",height:"130px",margin:"15px"}} >
                           <h1>{ele.title}</h1>
                           <p>{ele.date}</p>
                           <p>{ele.time}</p>
+                        </div>
+                        <div onClick={this.details} title={ele.user} id={ele._id} style={{position: "absolute",top: "0",left: "0",display: "inline-block",width: "250px",height: "130px",ZIndex: "0"}}>
                         </div>
                       </Tilt>
                     </div>
