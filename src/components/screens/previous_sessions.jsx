@@ -218,7 +218,7 @@ details=(e)=>{
                   {this.state.data.map((ele,i) => (
                     <div key={i} className="col-sm-6">
                       <Tilt style={{width:"250px",height:"130px",margin:"15px"}}>
-                        <div  className="ses-info" style={{width:"250px",height:"130px",margin:"15px"}} className="ses-info">
+                        <div  className="ses-info" style={{width:"250px",height:"130px",margin:"15px"}} >
                           <h1>{ele.title}</h1>
                           <p>{ele.date}</p>
                           <p>{ele.time}</p>

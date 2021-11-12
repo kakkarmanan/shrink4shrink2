@@ -107,32 +107,32 @@ class Details extends React.Component {
               style={{ backgroundColor: "#FAF3F3" }}
             >
               <h1 className="text-dark">Details of Previous session</h1>
-              <div class="container mt-5 mb-5">
+              <div className="container mt-5 mb-5">
     <div className="row no-gutters">
         <div className="col-md-8 col-lg-8">
             <div className="d-flex flex-column">
                 <div className="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
-                    <h3 className="display-5">{this.state.uemail}</h3><i className="fa fa-facebook"></i><i className="fa fa-google"></i><i className="fa fa-youtube-play"></i><i className="fa fa-dribbble"></i><i className="fa fa-linkedin"></i>
+                    <h3 className="display-5">{this.state.data.title}</h3><i className="fa fa-facebook"></i><i className="fa fa-google"></i><i className="fa fa-youtube-play"></i><i className="fa fa-dribbble"></i><i className="fa fa-linkedin"></i>
                 </div>
                 <div className="p-3 bg-dark text-light">
-                    <h6>Session ID: {this.state.sid}</h6>
+                    <h6>Email ID: {this.state.data.user}</h6>
                 </div>
                 <div className="d-flex flex-row text-white">
                     <div className="p-4 bg-primary text-center skill-block">
-                        <a href={this.state.data.prescription}>Click Here</a>
+                        <a className="text-dark" href={this.state.data.prescription}>Click Here</a>
                         <h6>Prescription</h6>
                     </div>
                     <div className="p-3 bg-success text-center skill-block">
-                        <h4>70%</h4>
-                        <h6>Jquery</h6>
+                        <h4>{this.state.data.doctor}</h4>
+                        <h6>Doctor</h6>
                     </div>
                     <div className="p-3 bg-warning text-center skill-block">
-                        <h4>80%</h4>
-                        <h6>HTML</h6>
+                        <h4>{this.state.data.date}</h4>
+                        <h6>Date</h6>
                     </div>
                     <div className="p-3 bg-danger text-center skill-block">
-                        <h4>75%</h4>
-                        <h6>PHP</h6>
+                        <h4>{this.state.data.time}</h4>
+                        <h6>Time</h6>
                     </div>
                 </div>
             </div>
