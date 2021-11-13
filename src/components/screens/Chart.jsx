@@ -1,28 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Chart } from "react-charts";
 
-export default function Charts() {
+export default function Charts({ propsData }) {
+  const [graphData, setGraphData] = useState([]);
+  useEffect(() => {
+    console.log(propsData);
+    propsData.forEach((ele) => {
+      setGraphData((prevData) => {
+        const date = new Date(ele.date);
+        return [...prevData, [date, ele.progress_rating]];
+      });
+    });
+    graphData.sort((a, b) => a[0] < b[0]);
+    console.log(graphData);
+  }, [propsData]);
   const data = React.useMemo(
     () => [
       {
         label: "Progress",
-        data: [
-          [0, 1],
-          [1, 2],
-          [2, 4],
-          [3, 2],
-          [4, 7],
-        ],
-      },
-      {
-        label: "Date",
-        data: [
-          [0, 3],
-          [1, 1],
-          [2, 5],
-          [3, 6],
-          [4, 4],
-        ],
+        data: graphData,
       },
     ],
     []
@@ -45,30 +41,7 @@ export default function Charts() {
         height: "35vh",
       }}
     >
-      <Chart
-        data={data}
-        axes={axes}
-        options={{
-          scales: {
-            yAxes: [
-              {
-                scaleLabel: {
-                  display: true,
-                  labelString: "Y text",
-                },
-              },
-            ],
-            xAxes: [
-              {
-                scaleLabel: {
-                  display: true,
-                  labelString: "X text",
-                },
-              },
-            ],
-          },
-        }}
-      />
+      <Chart data={data} axes={axes} />
     </div>
   );
 }

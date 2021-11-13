@@ -14,6 +14,7 @@ const Dashboard = (props) => {
   const [lastSession, setLastSession] = useState(null);
   const [nusns, setnusns] = useState(0);
   const [npsns, setnpsns] = useState(0);
+  const [sessions, setSessions] = useState(null);
   useEffect(() => {
     const func = async () => {
       let data = await fetch(
@@ -81,8 +82,8 @@ const Dashboard = (props) => {
       );
 
       data1 = await data1.json();
+      setSessions(data1);
       await setLastSession(data1[0]);
-      console.log(data1);
       setnpsns(data1.length);
     };
     func();
@@ -242,13 +243,15 @@ const Dashboard = (props) => {
                 </Tilt>
               </div>
             </div>
-            <div className="row">
-              <div className="row ses-info">
-                <div className="col-sm-8">
-                  <Chart />
+            {sessions && (
+              <div className="row">
+                <div className="row ses-info">
+                  <div className="col-sm-8">
+                    <Chart propsData={sessions} />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             <div className="row">
               <div className="col-sm-6">
                 <div className="ses-info">
