@@ -1,5 +1,6 @@
 import React from "react";
 import "./feedback.css";
+import Alert from "@mui/material/Alert";
 
 class PatientFeedback extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class PatientFeedback extends React.Component {
     this.state = {
       u: JSON.parse(localStorage.getItem("user")),
       feedback: "",
+      success: false,
     };
   }
   onChange = (e) =>
@@ -29,6 +31,15 @@ class PatientFeedback extends React.Component {
     );
     data = await data.json();
     console.log(data);
+    if (data) {
+      this.setState({
+        ...this.state,
+        success: true,
+      });
+    }
+    setTimeout(() => {
+      this.props.history.push("/dashboard");
+    }, 1500);
   };
   render() {
     return (
@@ -45,7 +56,12 @@ class PatientFeedback extends React.Component {
           }}
         >
           <div className="wrap-contact100">
-            <form className="contact100-form validate-form">
+            {this.state.success && (
+              <Alert severity="success">
+                This is a success alert — check it out!
+              </Alert>
+            )}
+            <form className="contact100-form validate-form mt-3">
               <h1 className="contact100-from-title">Feedback</h1>
               <div
                 className="wrap-input100 validate-input"
