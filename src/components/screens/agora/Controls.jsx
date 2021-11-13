@@ -28,16 +28,16 @@ const Controls = ({
     }
   };
 
-  const leaveChannel = async () => {
-    await client.leave();
-    client.removeAllListeners();
-    // we close the tracks to perform cleanup
-    tracks[0].close();
-    tracks[1].close();
-    setStart(false);
-    setInCall(false);
-    history.push("/upcoming-sessions");
-  };
+  // const leaveChannel = async () => {
+  //   await client.leave();
+  //   client.removeAllListeners();
+  //   // we close the tracks to perform cleanup
+  //   tracks[0].close();
+  //   tracks[1].close();
+  //   setStart(false);
+  //   setInCall(false);
+  //   history.push("/upcoming-sessions");
+  // };
 
   const endSession = async () => {
     let data = await fetch(
@@ -54,6 +54,7 @@ const Controls = ({
       }
     );
     data = await data.json();
+    console.log(data)
     await client.leave();
     client.removeAllListeners();
     // we close the tracks to perform cleanup

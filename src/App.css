@@ -1,5 +1,7 @@
 body{
-  background-color: #6c757d
+  background-color: #6c757d;
+  /* overflow-y: hidden; Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
 

@@ -173,7 +173,7 @@ const Dashboard = (props) => {
 
           <div
             className="col main pt-5 mt-3"
-            style={{ backgroundColor: "#FAF3F3" }}
+            style={{ backgroundColor: "#FAF3F3",height:"100vh" }}
           >
             <h1 className="display-4 d-none d-sm-block text-dark">
               {u.firstname} {u.lastname}
@@ -244,9 +244,9 @@ const Dashboard = (props) => {
               </div>
             </div>
             {sessions && (
-              <div className="row">
-                <div className="row ses-info">
-                  <div className="col-sm-8">
+              <div className="row mb-3 py-2">
+                <div className="col-xl-6 col-sm-12">
+                  <div className="ses-info" style={{width:"50vh"}}>
                     <Chart propsData={sessions} />
                   </div>
                 </div>
