@@ -32,7 +32,7 @@ const Dashboard = (props) => {
       );
 
       data = await data.json();
-      await setLatestSession(data[0]);
+      setLatestSession(data[0]);
       console.log(data);
       setnusns(data.length);
       const date = new Date(Date.now());
