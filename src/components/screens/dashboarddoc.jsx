@@ -13,12 +13,13 @@ class dashboarddoc extends React.Component {
       npdsns: 0,
       latest: null,
       last: null,
+      setjoin:false
     };
   }
   handleSignOut() {
     localStorage.removeItem("user");
   }
-  componentDidMount = () => {
+  componentDidMount = async () => {
     fetch("https://shrink4shrink.herokuapp.com/api/usersessions", {
       method: "post",
       headers: { "Content-type": "application/json" },
@@ -31,9 +32,25 @@ class dashboarddoc extends React.Component {
       .then((response) => response.json())
       .then((resp) => {
         console.log(resp);
-        this.setState({
+        var datee = new Date();
+      var day = datee.getDate();
+      var month = datee.getMonth() + 1;
+      var year = datee.getFullYear();
+      var today = year + "-" + month + "-" + day;
+      var ans=0
+      console.log(today)
+      for (let i = 0; i < resp.length; i++) {
+        console.log(resp[i])
+        if (resp[i].date===today && Number(resp[i].time.split(":")[0]) === datee.getHours() && Number(resp[i].time.split(":")[1])-datee.getMinutes()<= 5 && Number(resp[i].time.split(":")[1])-datee.getMinutes() >= 0) {
+          ans=i
+          this.setState({...this.state,setjoin:true})
+          break;
+        }
+      }
+       this.setState({
+        ...this.state,
           nudns: resp.length,
-          latest: resp[0],
+          latest: resp[ans],
         });
       });
     fetch("https://shrink4shrink.herokuapp.com/api/usersessions", {
@@ -49,6 +66,7 @@ class dashboarddoc extends React.Component {
       .then((resp1) => {
         console.log(resp1);
         this.setState({
+          ...this.state,
           npdsns: resp1.length,
           last: resp1[0],
         });
@@ -195,6 +213,7 @@ class dashboarddoc extends React.Component {
                         Patient: {this.state.latest && this.state.latest.user}
                       </p>
                     </div>
+                    {this.state.setjoin &&
                     <button
                       onClick={() =>
                         this.props.history.push(
@@ -205,7 +224,7 @@ class dashboarddoc extends React.Component {
                       class="btn btn-success"
                     >
                       Join now
-                    </button>
+                    </button>}
                   </div>
                 </div>
               </div>
