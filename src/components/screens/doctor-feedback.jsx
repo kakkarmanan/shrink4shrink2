@@ -40,7 +40,7 @@ class DoctorFeedback extends React.Component {
       });
     }
     setTimeout(() => {
-      this.props.history.push("/dashboard");
+      this.props.history.push("/dashboarddoc");
     }, 1500);
   };
   render() {
@@ -59,9 +59,7 @@ class DoctorFeedback extends React.Component {
         >
           <div className="wrap-contact100">
             {this.state.success && (
-              <Alert severity="success">
-                This is a success alert — check it out!
-              </Alert>
+              <Alert severity="success">Thanks for your feedback</Alert>
             )}
             <form className="contact100-form validate-form">
               <h1 className="contact100-from-title">Feedback</h1>

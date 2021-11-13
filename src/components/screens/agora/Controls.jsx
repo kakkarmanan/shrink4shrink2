@@ -14,7 +14,7 @@ const Controls = ({
   history,
 }) => {
   const [trackState, setTrackState] = useState({ video: true, audio: true });
-
+  const isDoctor = JSON.parse(localStorage.getItem("user")).doctor;
   const mute = async (type) => {
     if (type === "audio") {
       await tracks[0].setEnabled(!trackState.audio);
@@ -55,8 +55,17 @@ const Controls = ({
       }
     );
     data = await data.json();
-    if (data) {
+    await client.leave();
+    client.removeAllListeners();
+    // we close the tracks to perform cleanup
+    tracks[0].close();
+    tracks[1].close();
+    setStart(false);
+    setInCall(false);
+    if (isDoctor) {
       history.push(`/doctor-feedback/${sessionId}`);
+    } else {
+      history.push(`/patient-feedback/${sessionId}`);
     }
   };
 

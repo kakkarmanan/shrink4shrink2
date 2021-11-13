@@ -37,12 +37,17 @@ const Dashboard = (props) => {
       var month = datee.getMonth() + 1;
       var year = datee.getFullYear();
       var today = year + "-" + month + "-" + day;
-      var ans=0
-      console.log(today)
+      var ans = 0;
+      console.log(today);
       for (let i = 0; i < data.length; i++) {
-        console.log(data[i])
-        if (data[i].date===today && Number(data[i].time.split(":")[0]) === datee.getHours() && Number(data[i].time.split(":")[1])-datee.getMinutes()<= 5 && Number(data[i].time.split(":")[1])-datee.getMinutes() >= 0) {
-          ans=i
+        console.log(data[i]);
+        if (
+          data[i].date === today &&
+          Number(data[i].time.split(":")[0]) === datee.getHours() &&
+          Number(data[i].time.split(":")[1]) - datee.getMinutes() <= 5 &&
+          Number(data[i].time.split(":")[1]) - datee.getMinutes() >= 0
+        ) {
+          ans = i;
           break;
         }
       }
@@ -89,19 +94,19 @@ const Dashboard = (props) => {
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
-          <a className="navbar-brand" href="/">
-            s4s
-          </a>
-          <form className="d-flex">
-            <Link
-              to="/"
-              className="button btn btn-outline-success me-2"
-              onClick={handleSignOut}
-            >
-              Logout
-            </Link>
-          </form>
-          {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toogle navigation">
+        <a className="navbar-brand" href="/">
+          s4s
+        </a>
+        <form className="d-flex">
+          <Link
+            to="/"
+            className="button btn btn-outline-success me-2"
+            onClick={handleSignOut}
+          >
+            Logout
+          </Link>
+        </form>
+        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toogle navigation">
             <span className="navbar-toggle-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -274,7 +279,7 @@ const Dashboard = (props) => {
                       type="button"
                       class="btn btn-success"
                     >
-                      Success
+                      Join now
                     </button>
                   )}
                 </div>
