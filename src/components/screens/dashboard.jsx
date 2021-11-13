@@ -252,8 +252,8 @@ const Dashboard = (props) => {
                 </div>
               </div>
             )}
-            <div className="row">
-              <div className="col-sm-6">
+            <div className="row mb-3">
+              <div className="col-xl-6 col-sm-12 py-2">
                 <div className="ses-info">
                   <h1>Previous Sessions</h1>
                   <p>{lastSession && lastSession.title}</p>
@@ -266,14 +266,12 @@ const Dashboard = (props) => {
                   </p>
                 </div>
               </div>
-              <div className="col-sm-6">
+              <div className="col-xl-6 col-sm-12 py-2">
                 <div className="row ses-info">
-                  <div className="col-sm-8">
                     <h1>Upcoming Sessions</h1>
                     <p>{latestSession && latestSession.title}</p>
                     <p>Date: {latestSession && latestSession.date}</p>
                     <p> </p>
-                  </div>
                   {join && (
                     <button
                       onClick={() =>

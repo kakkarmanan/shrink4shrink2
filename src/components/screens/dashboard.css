@@ -33,24 +33,41 @@ html {
     }
 } */
 
-/*
- * Off Canvas wider at sm breakpoint
- * --------------------------------------------------
- */
-/* @media screen and (max-width: 34em) {
-    .row-offcanvas-left .sidebar-offcanvas {
-        left: -45%;
-    }
 
-    .row-offcanvas-left.active {
-        left: 45%;
-        margin-left: -6px;
-    }
 
-    .sidebar-offcanvas {
-        width: 45%;
-    }
-} */
+ @media screen and (max-width: 34em) {
+    .ses-info {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 100%;
+    margin: 16px;
+    float: left;
+  }
+  .ses-info h1 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+  }
+  .ses-info p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  .ses-info button {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    color: #f5ba13;
+    border: none;
+    width: 100px;
+    height: 36px;
+    cursor: pointer;
+    outline: none;
+  }
+}
 
 .card {
     overflow: hidden;

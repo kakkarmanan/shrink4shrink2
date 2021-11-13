@@ -220,7 +220,7 @@ details=(e)=>{
                 <h1 className="text-dark">Previous Sessions</h1>
                 <div className="row">
                   {this.state.data.map((ele,i) => (
-                    <div key={i} className="col-sm-6">
+                    <div key={i} className="col-xl-6 col-sm-12 py-2">
                       <Tilt style={{width:"250px",height:"130px",margin:"15px"}}>
                         <div  className="ses-info" style={{width:"250px",height:"130px",margin:"15px"}} >
                           <h1>{ele.title}</h1>
