@@ -41,8 +41,8 @@ class LandingPage extends React.Component {
             height: "100vh"
           }}
         >
-          <h1 className="text-dark" style={{ position: "absolute", left: "10vh", top: "40vh", fontSize: "7vh" }}>Welcome to Shrink4Shrink</h1>
-          <p className="text-dark lead d-none d-sm-block" style={{ position: "absolute", left: "10vh", top: "48vh", fontSize: "4vh" }} >We are here to help you!</p>
+          <h1 className="text-dark" style={{ position: "absolute", left: "10vw", top: "38vh", fontSize: "7vh" }}>Welcome to Shrink4Shrink</h1>
+          <p className="text-dark lead d-none d-sm-block" style={{ position: "absolute", left: "12vw", top: "45vh", fontSize: "4vh" }} >We are here to help you!</p>
         </div>
         <div className="row" style={{
           backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/29728328.jpg?alt=media&token=211073bd-13a9-4358-ae62-7f6159dad20c')",
@@ -54,22 +54,21 @@ class LandingPage extends React.Component {
         </div>
 
         <div
-          className="bg-image d-flex justify-content-left align-items-center row"
+          className="bg-image d-flex justify-content-left align-items-center row "
           style={{
             backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/5291450.jpg?alt=media&token=c0775023-8cd1-4db0-8339-0fb6d15401b6')",
             height: "100vh", width: "100vw"
           }}
         >
-          <div style={{ position: "absolute", right: "20vh", height: "90vh", width: "70vh", margin: "20px", zIndex: "0" }}>
-            <div class="container">
-              <div class="row">
-                <div class="col-xs-6">
-                  <h1 className="text-dark" style={{ position: "absolute", zIndex: "2", left: "-40vw", top: "30vh", fontSize: "8vh" }}>About us!</h1>
+          <div  style={{ position: "absolute", right: "20vh", height: "90vh", width: "70vw", margin: "20px", zIndex: "0" }}>
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-6">
+                  <h1 className="text-dark" style={{ position: "absolute", zIndex: "1", left: "5vw", top: "30vh", fontSize: "8vh",overflow:"hidden" }}>About us!</h1>
                 </div>
-                <div class="col-xs-6">
-                  <img style={{ height: "90vh", width: "70vh" }} src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/95278308-old-brown-paper-sheet-for-writing-text-isolate-on-white-background.jpg?alt=media&token=0fb9f01b-f0d4-48cc-992e-2e73dd82cd4b" alt="about us" className="float-end"></img>
-
-                  <div className="text-block" style={{ zIndex: "2", position: "absolute", left: "8vh", top: "15vh", height: "30vh", width: "70vh", margin: "20px" }}>
+                <div className="col-xs-6 d-none d-sm-block">
+                  <img style={{ height: "90vh", width: "30vw" }} src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/95278308-old-brown-paper-sheet-for-writing-text-isolate-on-white-background.jpg?alt=media&token=0fb9f01b-f0d4-48cc-992e-2e73dd82cd4b" alt="about us" className="float-end"></img>
+                  <div className="text-block" style={{ zIndex: "2", position: "absolute", left: "42vw", top: "15vh", height: "30vh", width: "70vw", margin: "20px",fontSize: "1.7vh" }}>
                     <h4><b>Our Moto: Shrink Your Problems</b></h4>
                     <br></br>
                     <p>We offers access to mental health treatment to people<br/> in urban,rural or remote areas.Those who live in rural<br/>areas simply might not have access to any form of mental<br/>health treatment because there are few or no mental heal-<br/>th practices in their area.We are here to connect to you &<br/> help you</p>
