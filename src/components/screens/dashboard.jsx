@@ -40,19 +40,9 @@ const Dashboard = (props) => {
       var ans=0
       console.log(today)
       for (let i = 0; i < data.length; i++) {
-<<<<<<< HEAD
         console.log(data[i])
         if (data[i].date===today && Number(data[i].time.split(":")[0]) === datee.getHours() && Number(data[i].time.split(":")[1])-datee.getMinutes()<= 5 && Number(data[i].time.split(":")[1])-datee.getMinutes() >= 0) {
           ans=i
-=======
-        if (
-          data[i].date === today &&
-          Number(data[i].time.split(":")[0]) === datee.getHours() &&
-          Number(data[i].time.split(":")[1]) - datee.getMinutes() <= 5 &&
-          Number(data[i].time.split(":")[1]) - datee.getMinutes() >= 0
-        ) {
-          await setLatestSession(data[i]);
->>>>>>> ae73133a03049765c7a18996fa40da8b4f6ded1e
           break;
         }
       }
