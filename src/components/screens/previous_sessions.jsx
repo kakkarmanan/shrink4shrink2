@@ -127,14 +127,14 @@ details=(e)=>{
                 <div className="row">
                   {this.state.data.map((ele,i) => (
                     <div key={i} className="col-sm-6">
-                      <Tilt style={{width:"250px",height:"130px",margin:"15px"}}>
-                        <div id={ele._id} className="ses-info" style={{width:"250px",height:"130px",margin:"15px"}}>
+                      <Tilt>
+                        <div id={ele._id} className="ses-info">
                         <h1>User: {ele.user}</h1>
                           <h1>Title: {ele.title}</h1>
                           <p>Date: {ele.date}</p>
                           <p>Time: {ele.time}</p>
                         </div>
-                        <div onClick={this.addpresc} title={ele.user} id={ele._id} style={{position: "absolute",top: "0",left: "0",display: "inline-block",width: "250px",height: "130px",ZIndex: "0"}}>
+                        <div onClick={this.addpresc} title={ele.user} id={ele._id}>
                         </div>
                       </Tilt>
                     </div>

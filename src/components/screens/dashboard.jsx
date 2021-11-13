@@ -71,7 +71,6 @@ const Dashboard = (props) => {
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
-        <div className="container-fluid">
           <a className="navbar-brand" href="/">
             s4s
           </a>
@@ -84,7 +83,17 @@ const Dashboard = (props) => {
               Logout
             </Link>
           </form>
-        </div>
+          {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toogle navigation">
+            <span className="navbar-toggle-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class = "list-group bg-priamry d-block s-sm-none">
+              <li class="list-unstyled border-0 p-2"><a class ="nav-link" href="/upcoming-sessions" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Upcoming Sessions</a></li>
+              <li class="list-unstyled border-0 p-2"><a href="/upcoming-sessions">Upcoming Sessions</a></li>
+              <li class="list-unstyled border-0 p-2"><a href="/upcoming-sessions">Upcoming Sessions</a></li>
+              <li class="list-unstyled border-0 p-2"><a href="/upcoming-sessions">Upcoming Sessions</a></li>
+            </ul>
+          </div> */}
       </nav>
       <div className="container-fluid" id="main">
         <div className="row row-offcanvas row-offcanvas-left">
