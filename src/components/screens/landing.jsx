@@ -58,12 +58,71 @@ class LandingPage extends React.Component {
     height: "100vh"}}
 >
   <h1 className="text-dark" style={{position:"absolute", left:"40vh",fontSize:"8vh"}}>About us!</h1>
-  <img style={{position:"absolute",right:"20vh",height:"90vh",width:"70vh",margin:"20px",zIndex:"0"}} src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/95278308-old-brown-paper-sheet-for-writing-text-isolate-on-white-background.jpg?alt=media&token=0fb9f01b-f0d4-48cc-992e-2e73dd82cd4b" alt="about us" className="float-end"></img>
-  <div className="text-block" style={{zIndex:"2", position:"absolute",right:"10vh", height:"90vh",width:"70vh",margin:"20px"}}>
+  <div style={{position:"absolute",right:"20vh",height:"90vh",width:"70vh",margin:"20px",zIndex:"0"}}>
+  <img  style={{height:"90vh",width:"70vh"}} src="https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/95278308-old-brown-paper-sheet-for-writing-text-isolate-on-white-background.jpg?alt=media&token=0fb9f01b-f0d4-48cc-992e-2e73dd82cd4b" alt="about us" className="float-end"></img>
+  <div className="text-block" style={{zIndex:"2", position:"absolute",right:"-15vh",top:"10vh", height:"30vh",width:"70vh",margin:"20px"}}>
     <h4>Nature</h4>
     <p>What a beautiful sunrise</p>
   </div>
+  </div>
 </div> 
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4">
+    <section class="">
+      <form action="">
+        <div class="row d-flex justify-content-center">
+          
+          <div class="col-auto">
+            <a href="login" class="btn btn-outline-light mb-4">
+              Login
+            </a>
+          </div>
+          <div class="col-auto">
+            <a href="/register" class="btn btn-outline-light mb-4">
+              Register Patient
+            </a>
+          </div>
+          <div class="col-auto">
+            <a href="/registerdoc" class="btn btn-outline-light mb-4">
+              Register Doctor
+            </a>
+          </div>
+        </div>
+      </form>
+    </section>
+    <section class="mb-4">
+      <p>
+        We are students of Thapar Institute of Engineering and Technology.
+      </p>
+    </section>
+    <section class="">
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Made By:-</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="https://github.com/ayushkulshrestha2001" class="text-white">Ayush Kulshrestha</a>
+            </li>
+            <li>
+              <a href="https://github.com/divanshurox" class="text-white">Divanshu Agarwal</a>
+            </li>
+            <li>
+              <a href="https://github.com/kakkarmanan" class="text-white">Manan Kakkar</a>
+            </li>
+            <li>
+              <a href="https://github.com/jinik21" class="text-white">Nikheel Jain</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div className="text-center p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
+    © 2021 Copyright: 
+    <a className="text-white" href="https://shrink4shrink.netlify.app/">shrink4shrink</a>
+  </div>
+</footer>
 
 
 </div>
