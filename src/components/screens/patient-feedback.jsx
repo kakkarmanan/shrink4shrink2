@@ -57,9 +57,7 @@ class PatientFeedback extends React.Component {
         >
           <div className="wrap-contact100">
             {this.state.success && (
-              <Alert severity="success">
-                This is a success alert — check it out!
-              </Alert>
+              <Alert severity="success">Thanks for your feedback</Alert>
             )}
             <form className="contact100-form validate-form mt-3">
               <h1 className="contact100-from-title">Feedback</h1>
