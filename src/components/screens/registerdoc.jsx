@@ -570,6 +570,15 @@ class RegisterPageDoc extends React.Component {
                             Register
                           </button>
                         </div>
+                        <div className="d-flex justify-content-end pt-3">
+                          <a
+                            type="button"
+                            className="btn btn-light btn-lg b2-color"
+                            href="/login"
+                          >
+                            Already Registered.Continue to Login!
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

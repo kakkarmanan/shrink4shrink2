@@ -89,8 +89,9 @@ class RegisterPage extends React.Component {
               // this.props.onRouteChange('home');
               //this.props.history.push("/welcome");
               //localStorage.removeItem("user");
-              alert("you have successfully registered continue to login!!");
-              this.props.history.push("/login");
+              alert("you have successfully registered. Help us know you better!!");
+              localStorage.setItem("user", JSON.stringify(user));
+              this.props.history.push("/form");
             } else {
               alert(user);
             }
@@ -452,6 +453,15 @@ class RegisterPage extends React.Component {
                           >
                             Register
                           </button>
+                        </div>
+                        <div className="d-flex justify-content-end pt-3">
+                          <a
+                            type="button"
+                            className="btn btn-light btn-lg b2-color"
+                            href="/login"
+                          >
+                            Already Registered.Continue to Login!
+                          </a>
                         </div>
                       </div>
                     </div>

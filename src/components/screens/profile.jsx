@@ -35,6 +35,22 @@ class Profile extends React.Component{
           changes:[],
         };
       }
+      onUpdate=()=>{
+        fetch("https://shrink4shrink.herokuapp.com/api/userdata", {
+            method: "post",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                email: this.state.u.email
+            })
+        })
+        .then((response)=>response.json())
+            .then((resp1) => {
+                console.log(resp1);
+                localStorage.removeItem("user");
+                localStorage.setItem("user", JSON.stringify(resp1));
+                this.props.history.push("/dashboard");
+            });
+      }
       onedit=(e)=>{
         this.setState({
             data: { ...this.state.data, [e.target.name]: e.target.value },

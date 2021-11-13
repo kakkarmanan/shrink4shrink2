@@ -78,8 +78,8 @@ class Patients extends React.Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="/addpresc">
-                    Add Prescriptions
+                  <a className="nav-link text-light" href="/pending-session">
+                    Pending Sessions
                   </a>
                 </li>
               </ul>

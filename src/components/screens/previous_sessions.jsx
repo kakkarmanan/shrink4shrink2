@@ -112,8 +112,8 @@ details=(e)=>{
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="/addpresc">
-                    Add Prescriptions
+                  <a className="nav-link text-light" href="/pending-session">
+                    Pending Sessions
                   </a>
                 </li>
               </ul>
@@ -206,6 +206,11 @@ details=(e)=>{
                       Find Doctor
                     </a>
                   </li>
+                  <li className="nav-item">
+                  <a className="nav-link text-light" href="/user-profile">
+                    Profile
+                  </a>
+                </li>
                 </ul>
               </div>
               <div
