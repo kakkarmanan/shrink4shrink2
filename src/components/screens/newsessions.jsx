@@ -111,6 +111,11 @@ class newsession extends React.Component {
                     Find Doctor
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/user-profile">
+                    Profile
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="col main pt-5 mt-3" style={{ backgroundColor: "#FAF3F3" }}>

@@ -150,6 +150,22 @@ class LoginPage extends React.Component {
                             Login
                           </button>
                         </div>
+                        <div className="d-flex justify-content-end pt-3">
+                          <a
+                            type="button"
+                            className="btn btn-light btn-lg b2-color"
+                            href="/registerdoc"
+                          >
+                            Register as a Doctor.
+                          </a>
+                          <a
+                            type="button"
+                            className="btn btn-light btn-lg b2-color"
+                            href="/register"
+                          >
+                            Register as a Patient.
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

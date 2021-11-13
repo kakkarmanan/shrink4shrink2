@@ -1,5 +1,5 @@
 import React from "react";
-import { Widget } from '@typeform/embed-react'
+import { Widget } from '@typeform/embed-react';
 import './dashboard.css';
 
 

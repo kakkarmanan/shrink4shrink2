@@ -99,9 +99,9 @@ reject(e){
               style={{ backgroundColor: "#171010" }}
             >
               <ul className="nav flex-column sticky-top pl-0 pt-5 mt-3">
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/dashboard">
-                    Home
+              <li className="nav-item">
+                  <a className="nav-link text-light" href="/dashboarddoc">
+                    Homepage
                   </a>
                 </li>
                 <li className="nav-item">
@@ -115,23 +115,8 @@ reject(e){
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="/routines">
-                    Routines
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/prescriptions">
-                    Prescriptions
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/newsession">
-                    New Session
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/find-doctor">
-                    Find Doctor
+                  <a className="nav-link text-light" href="/patients">
+                    Patients
                   </a>
                 </li>
                 <li className="nav-item">
