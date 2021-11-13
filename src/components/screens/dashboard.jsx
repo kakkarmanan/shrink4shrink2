@@ -37,20 +37,24 @@ const Dashboard = (props) => {
       var month = datee.getMonth() + 1;
       var year = datee.getFullYear();
       var today = year + "-" + month + "-" + day;
+      var ans=0
+      console.log(today)
       for (let i = 0; i < data.length; i++) {
+        console.log(data[i])
         if (data[i].date===today && Number(data[i].time.split(":")[0]) === datee.getHours() && Number(data[i].time.split(":")[1])-datee.getMinutes()<= 5 && Number(data[i].time.split(":")[1])-datee.getMinutes() >= 0) {
-          await setLatestSession(data[i]);
+          ans=i
           break;
         }
       }
+      await setLatestSession(data[ans]);
       console.log(data);
       setnusns(data.length);
       const date = new Date(Date.now());
       if (
         data.length > 0 &&
-        Number(data[0].time.split(":")[0]) === date.getHours() &&
-        Number(data[0].time.split(":")[1]) - date.getMinutes() <= 5 &&
-        Number(data[0].time.split(":")[1]) - date.getMinutes() >= 0
+        Number(data[ans].time.split(":")[0]) === date.getHours() &&
+        Number(data[ans].time.split(":")[1]) - date.getMinutes() <= 5 &&
+        Number(data[ans].time.split(":")[1]) - date.getMinutes() >= 0
       ) {
         setJoin(true);
       }
