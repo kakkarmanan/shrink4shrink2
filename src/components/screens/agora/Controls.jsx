@@ -119,7 +119,7 @@ const Controls = ({
       >
         {trackState.video ? <VideocamOffIcon /> : <VideocamIcon />}
       </div>
-      <div
+      {/* <div
         className="col-md-2"
         style={{
           height: 40,
@@ -134,7 +134,7 @@ const Controls = ({
         onClick={() => leaveChannel()}
       >
         <CallEndIcon />
-      </div>
+      </div> */}
       <div
         style={{
           height: 40,
