@@ -32,7 +32,17 @@ const Dashboard = (props) => {
       );
 
       data = await data.json();
-      await setLatestSession(data[0]);
+      var datee = new Date()
+      var day = datee.getDate();
+      var month = datee.getMonth() + 1;
+      var year = datee.getFullYear();
+      var today = year + "-" + month + "-" + day;
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].date===today && Number(data[i].time.split(":")[0]) === datee.getHours() && Number(data[i].time.split(":")[1])-datee.getMinutes()<= 5 && Number(data[i].time.split(":")[1])-datee.getMinutes() >= 0) {
+          await setLatestSession(data[i]);
+          break;
+        }
+      }
       console.log(data);
       setnusns(data.length);
       const date = new Date(Date.now());
