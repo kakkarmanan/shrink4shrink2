@@ -1,4 +1,4 @@
-import React, {  useState } from "react"; //useEffect,
+import React, { useState } from "react"; //useEffect,
 import MicIcon from "@mui/icons-material/Mic";
 import MicOffIcon from "@mui/icons-material/MicOff";
 import VideocamIcon from "@mui/icons-material/Videocam";
@@ -56,7 +56,7 @@ const Controls = ({
     );
     data = await data.json();
     if (data) {
-      history.push(`/patient-feedback/${sessionId}`);
+      history.push(`/doctor-feedback/${sessionId}`);
     }
   };
 

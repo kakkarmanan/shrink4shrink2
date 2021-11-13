@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./dashboard.css";
 import Tilt from "react-parallax-tilt";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import Chart from "./Chart";
 
 const Dashboard = (props) => {
   console.log(props);
-  const u=JSON.parse(localStorage.getItem("user"));
+  const u = JSON.parse(localStorage.getItem("user"));
   const [join, setJoin] = useState(false);
   const [latestSession, setLatestSession] = useState(null);
   const [lastSession, setLastSession] = useState(null);
-  const[nusns,setnusns]=useState(0);
-  const[npsns,setnpsns]=useState(0);
+  const [nusns, setnusns] = useState(0);
+  const [npsns, setnpsns] = useState(0);
   useEffect(() => {
     const func = async () => {
       let data = await fetch(
@@ -27,7 +30,7 @@ const Dashboard = (props) => {
           }),
         }
       );
-      
+
       data = await data.json();
       await setLatestSession(data[0]);
       console.log(data);
@@ -36,7 +39,8 @@ const Dashboard = (props) => {
       if (
         data.length > 0 &&
         Number(data[0].time.split(":")[0]) === date.getHours() &&
-        Number(data[0].time.split(":")[1])-date.getMinutes()<= 5 && Number(data[0].time.split(":")[1])-date.getMinutes() >= 0
+        Number(data[0].time.split(":")[1]) - date.getMinutes() <= 5 &&
+        Number(data[0].time.split(":")[1]) - date.getMinutes() >= 0
       ) {
         setJoin(true);
       }
@@ -56,7 +60,7 @@ const Dashboard = (props) => {
           }),
         }
       );
-      
+
       data1 = await data1.json();
       await setLastSession(data1[0]);
       console.log(data1);
@@ -140,10 +144,10 @@ const Dashboard = (props) => {
                 </a>
               </li>
               <li className="nav-item">
-                  <a className="nav-link text-light" href="/user-profile">
-                    Profile
-                  </a>
-                </li>
+                <a className="nav-link text-light" href="/user-profile">
+                  Profile
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -151,7 +155,9 @@ const Dashboard = (props) => {
             className="col main pt-5 mt-3"
             style={{ backgroundColor: "#FAF3F3" }}
           >
-            <h1 className="display-4 d-none d-sm-block text-dark">{u.firstname} {u.lastname}</h1>
+            <h1 className="display-4 d-none d-sm-block text-dark">
+              {u.firstname} {u.lastname}
+            </h1>
             <p className="lead d-none d-sm-block text-dark">Dashboard</p>
 
             <div
@@ -171,6 +177,7 @@ const Dashboard = (props) => {
               <strong>Holy guacamole!</strong> It's free.. this is an example
               theme.
             </div>
+
             <div className="row mb-3">
               <div className="col-xl-3 col-sm-6 py-2">
                 <div className="card bg-success text-white h-100">
@@ -180,7 +187,7 @@ const Dashboard = (props) => {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Sessions</h6>
-                      <h1 className="display-4">{nusns+npsns}</h1>
+                      <h1 className="display-4">{nusns + npsns}</h1>
                     </div>
                   </Tilt>
                 </div>
@@ -193,7 +200,9 @@ const Dashboard = (props) => {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Upcoming Session</h6>
-                      <h1 className="display-4">Date: {latestSession && latestSession.date}</h1>
+                      <h1 className="display-4">
+                        Date: {latestSession && latestSession.date}
+                      </h1>
                     </div>
                   </div>
                 </Tilt>
@@ -206,10 +215,19 @@ const Dashboard = (props) => {
                         <i className="fa fa-user fa-4x"></i>
                       </div>
                       <h6 className="text-uppercase">Previous Session</h6>
-                      <h1 className="display-4">Date: {lastSession && lastSession.date}</h1>
+                      <h1 className="display-4">
+                        Date: {lastSession && lastSession.date}
+                      </h1>
                     </div>
                   </div>
                 </Tilt>
+              </div>
+            </div>
+            <div className="row">
+              <div className="row ses-info">
+                <div className="col-sm-8">
+                  <Chart />
+                </div>
               </div>
             </div>
             <div className="row">
@@ -218,7 +236,12 @@ const Dashboard = (props) => {
                   <h1>Previous Sessions</h1>
                   <p>{lastSession && lastSession.title}</p>
                   <p>Date: {lastSession && lastSession.date}</p>
-                  <p>Prescription: <a href={lastSession && lastSession.prescription}>Click here</a></p>
+                  <p>
+                    Prescription:{" "}
+                    <a href={lastSession && lastSession.prescription}>
+                      Click here
+                    </a>
+                  </p>
                 </div>
               </div>
               <div className="col-sm-6">
@@ -227,7 +250,7 @@ const Dashboard = (props) => {
                     <h1>Upcoming Sessions</h1>
                     <p>{latestSession && latestSession.title}</p>
                     <p>Date: {latestSession && latestSession.date}</p>
-                    <p>  </p>
+                    <p> </p>
                   </div>
                   {join && (
                     <button
@@ -244,6 +267,18 @@ const Dashboard = (props) => {
               </div>
             </div>
           </div>
+          <Fab
+            aria-label="add"
+            className="bg-success"
+            style={{
+              position: "fixed",
+              bottom: 15,
+              right: 15,
+            }}
+            onClick={() => this.props.history.push("/newsession")}
+          >
+            <AddIcon style={{ color: "#fff" }} />
+          </Fab>
         </div>
       </div>
     </div>
