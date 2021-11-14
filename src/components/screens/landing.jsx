@@ -38,7 +38,8 @@ class LandingPage extends React.Component {
   className="bg-image d-flex justify-content-left align-items-center"
   style={{
     backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/5291450.jpg?alt=media&token=c0775023-8cd1-4db0-8339-0fb6d15401b6')",
-    height: "100vh"}}
+    height: "100vh",
+    }}
 >
   <h1 className="text-dark" style={{position:"absolute",left:"10vh",top:"40vh",fontSize:"7vh"}}>Welcome to Shrink4Shrink</h1>
   <p className="text-dark lead d-none d-sm-block" style={{position:"absolute",left:"10vh",top:"48vh",fontSize:"4vh"}} >We are here to help you!</p>
