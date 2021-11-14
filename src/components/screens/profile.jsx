@@ -436,55 +436,6 @@ class Profile extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        {/* <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 class="mt-3 mb-2 text-primary">Experience</h6>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <label for="Name">Years of Experience</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" name="address" aria-describedby="basic-addon2" onChange={this.onedit} value={data.doctor_info.data.yearofexperience} disabled={this.state.abled_address}/>
-                                    <div class="input-group-append">
-                                        {this.state.abled_address==="disabled"?(<button class="input-group-text" id="basic-addon2" onClick={this.IsAddressAbled}><CreateIcon/></button>):(
-                                            <button class="input-group-text" id="basic-addon2" onClick={this.onAddressUpdate}><DoneIcon/></button>
-                                        )}                                    
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <label for="Name">License Number</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" name="city" aria-describedby="basic-addon2" onChange={this.onedit} value={data.doctor_info.data.license} disabled={this.state.abled_city}/>
-                                    <div class="input-group-append">
-                                        {this.state.abled_city==="disabled"?(<button class="input-group-text" id="basic-addon2" onClick={this.IsCityAbled}><CreateIcon/></button>):(
-                                            <button class="input-group-text" id="basic-addon2" onClick={this.onCityUpdate}><DoneIcon/></button>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <label for="Name">State</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" name="state" aria-describedby="basic-addon2" onChange={this.onedit} value={data.state} disabled={this.state.abled_state}/>
-                                    <div class="input-group-append">
-                                    {this.state.abled_state==="disabled"?(<button class="input-group-text" id="basic-addon2" onClick={this.IsStateAbled}><CreateIcon/></button>):(
-                                            <button class="input-group-text" id="basic-addon2" onClick={this.onStateUpdate}><DoneIcon/></button>
-                                        )}                                    
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <label for="Name">Pincode</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" name="pincode" aria-describedby="basic-addon2" onChange={this.onedit} value={data.pincode} disabled={this.state.abled_pincode}/>
-                                    <div class="input-group-append">
-                                    {this.state.abled_pincode==="disabled"?(<button class="input-group-text" id="basic-addon2" onClick={this.IsPincodeAbled}><CreateIcon/></button>):(
-                                            <button class="input-group-text" id="basic-addon2" onClick={this.onPincodeUpdate}><DoneIcon/></button>
-                                        )}                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
                         <div class="row gutters">
                             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
                                 <div class="text-right">

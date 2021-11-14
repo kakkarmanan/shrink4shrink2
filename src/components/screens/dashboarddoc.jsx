@@ -126,11 +126,11 @@ class dashboarddoc extends React.Component {
                     Pending Sessions
                   </a>
                 </li>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                   <a className="nav-link text-light" href="/user-profile">
                     Profile
                   </a> 
-                </li> */}
+                </li>
               </ul>
             </div>
 
