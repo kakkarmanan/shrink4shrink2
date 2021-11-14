@@ -26,7 +26,7 @@ class DoctorProfile extends React.Component {
                 this.setState({
                     data: resp
                 });
-                console.log(this.state.data);
+                console.log(this.state.data.doctorinfo.data.yearofexperience);
             });
         };
 
@@ -72,10 +72,6 @@ class DoctorProfile extends React.Component {
                             <div class="col-md-4">
                                 <div class="profile-img">
                                     <img src={data.picture} alt="" />
-                                    <div class="file btn btn-lg btn-primary">
-                                        Change Photo
-                                        <input type="file" name="file" />
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -86,15 +82,6 @@ class DoctorProfile extends React.Component {
                                     <h6>
                                         psychiatrist
                                     </h6>
-                                    <p class="proile-rating">RATINGS : <span>8/10</span></p>
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -104,8 +91,6 @@ class DoctorProfile extends React.Component {
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="profile-work">
-                                    {/* <p>EXPERIENCE:</p>
-                                    <span>4 years</span>*/}
                                 </div>
                             </div>
                             <div class="col-md-8">

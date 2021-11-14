@@ -82,6 +82,11 @@ class Patients extends React.Component {
                     Pending Sessions
                   </a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link text-light" href="/user-profile">
+                      Profile
+                    </a>
+                  </li>
               </ul>
             </div>
             <div className="col main pt-5 mt=3">
@@ -90,7 +95,7 @@ class Patients extends React.Component {
                   <div className="col-md-4 mt-4">
                     <div className="card profile-card-5">
                       <div className="card-img-block">
-                        <img className="card-img-top" src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c" alt="img" />
+                        <img className="card-img-top" src={ele.picture} alt="img" style={{height:"200px"}} />
                       </div>
                       <div className="card-body">
                         <h4 className="card-title">{ele.firstname} {ele.lastname}</h4>

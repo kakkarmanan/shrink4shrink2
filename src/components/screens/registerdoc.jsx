@@ -124,7 +124,7 @@ class RegisterPageDoc extends React.Component {
             yearofexperience: Number(this.state.data.yoe),
             liscence_doc: this.state.data.docurl,
             picture:
-              "https://i.dlpng.com/static/png/5066008-circled-user-icon-user-profile-icon-png-png-image-transparent-profile-icon-png-820_860_preview.png",
+            "https://firebasestorage.googleapis.com/v0/b/shrink4shrink.appspot.com/o/img.png?alt=media&token=9ea01296-80dd-44ad-a3e8-1442110f179b",
           }),
         })
           .then((response) => response.json())
