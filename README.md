@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Shrink4Shrink
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Inspiration
 
-## Available Scripts
+#### Problems of Mental People Faced during Covid
+COVID has accelerated the adoption of digital healthcare Services. Access to digital information and communication technologies are resulting in increased demand for services in remote health care management. 
+In current scenario, mental health of COVID has accelerated the adoption of digital healthcare Services. Access to digital information and communication technologies are resulting in increased demand for services in remote health care management. 
+In current scenario, mental health of people has suffered the most, and the medical system has not been able to keep up with the growing demand of mental help. 
+Due to COVID, people are still fearing to schedule in-person appoints to consult doctor .
+Also many problems like scheduling doctor appointments( unavailability of staff) , getting relevant info for personal healthcare and shyness to consult doctor for mental health. 
 
-In the project directory, you can run:
+## What it does
+To overcome the mentioned problems, we came up with a solution to develop a platform for people to schedule online appointments and organize therapy/ psychiatrist sessions.
+The platform will use AI to analyze and summarize  the responses of patients during session to give doctor a summary of session and help them to give right advice to their patients.
+Platform will also maintain reports of sessions and provide different options to patients to convey their problems/ routine to the doctor.
+When a patient joins our platform a set of relevant questions will be asked to generate a report of patient and assign it to doctor who can then read and prepare for session. After the patient can schedule a video call session with doctor .Doctor can either Accept or ask for reschedule. 
 
-### `npm start`
+In the session(video call) , using IBM speech to text and summarizer API, platform will generate real time summary of session and present it to doctor ,which he/she will use to give advice to patient. The advice will serve as outcome of session and will be accessible to patient and doctor at any time. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instruction to Run the repos:
+### Frontend
+#### -Clone the repo using git:
+     git clone https://github.com/jinik21/s4sfrontend.git
+#### -Install Node packages using NPM run :
+     npm i
+#### -Start the server and frontend using:
+	   npm start
+#### -for production build run:
+     npm run build
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ 
+### Backend
+#### -Clone the repo using git:
+ 	   git clone https://github.com/jinik21/s4sbackend.git
+#### -Install Node packages using NPM run :
+     npm i
+#### -Start the server and frontend using:
+     npm start
+    
+## Technologies Used:
+#### Shrink4Shrink
+- React Js
+- Node Js
+- IBM Speech to text and Summarizer API
+- Node JS(express JS)
+- MongoDB, Firebase
+- Agora.io
+- Material/UI, MDBBootstrap
 
-### `npm test`
+## What's next for shrink4shrink: 
+- Adding Support for MultiLingual Transcription & Notes Generation.
+- Expanding scope of platform to Other fields for Doctors & healthcare. 
+- A support for Chat system ,Grievance Service.
+- An android and IOS supported Application
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Live Demo at:
+- https://shrink4shrink.netlify.app/  (Frontend)
+- https://shrink4shrink.herokuapp.com/ (Backend)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Our Repositories:
+- https://github.com/jinik21/s4sfrontend
+- https://github.com/jinik21/s4sbackend
