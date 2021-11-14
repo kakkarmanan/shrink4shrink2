@@ -34,6 +34,7 @@ class Profile extends React.Component {
       abled_city: "disabled",
       abled_pincode: "disabled",
       abled_state: "disabled",
+      canChange:false,
       changes: [],
       file: null,
     };
@@ -221,6 +222,9 @@ class Profile extends React.Component {
         });
       });
   };
+  IsChange=()=>{
+      this.setState({canChange: true});
+  }
   IsFirstnameAbled = () => {
     this.setState({ abled_firstname: !this.state.abled_firstname });
   };
@@ -593,7 +597,7 @@ class Profile extends React.Component {
                     </div>
                   </div>
                   <div class="row gutters">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                       <div class="text-right">
                         <button
                           type="button"
@@ -601,14 +605,15 @@ class Profile extends React.Component {
                           class="btn btn-primary"
                           onClick={this.onUpdate}
                         >
-                          <DoneIcon />
+                          Click To Confirm
                         </button>
                       </div>
                     </div>
-                    <div class="input-group">
+                    {this.state.canChange?(
+                        <div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                       <span class="input-group-btn">
-                        <span class="btn btn-primary btn-file">
-                          Browse{" "}
+                        <span class="btn btn-primary">
                           <input
                             type="file"
                             single
@@ -617,13 +622,15 @@ class Profile extends React.Component {
                         </span>
                       </span>
                     </div>
-                    <button
-                      type="button"
-                      class="btn btn-success"
-                      onClick={() => this.uploadImage(this.state.file.name)}
-                    >
-                      Success
-                    </button>
+                    <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <button
+                        type="button"
+                        class="btn btn-primary"
+                        onClick={() => this.uploadImage(this.state.file.name)}
+                        >
+                        Upload Photo
+                        </button>
+                    </div></div>):(<div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12"><button onClick={this.IsChange} className="btn btn-primary">Change Photo</button></div>)}
                   </div>
                 </div>
               </div>
