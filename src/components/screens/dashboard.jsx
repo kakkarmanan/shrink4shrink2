@@ -295,7 +295,7 @@ const Dashboard = (props) => {
               bottom: 15,
               right: 15,
             }}
-            onClick={() => this.props.history.push("/newsession")}
+            onClick={() => props.history.push("/newsession")}
           >
             <AddIcon style={{ color: "#fff" }} />
           </Fab>
