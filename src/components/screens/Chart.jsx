@@ -2,23 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Chart } from "react-charts";
 
 export default function Charts({ propsData }) {
-  const [graphData, setGraphData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const chartProps = [];
   useEffect(() => {
     console.log(propsData);
-    propsData.forEach((ele) => {
-      setGraphData((prevData) => {
-        const date = new Date(ele.date);
-        return [...prevData, [date, ele.progress_rating]];
-      });
+    propsData.forEach((ele, i) => {
+      chartProps.push([i + 1, ele.progress_rating]);
     });
-    graphData.sort((a, b) => a[0] < b[0]);
-    console.log(graphData);
-  }, [propsData]);
+    chartProps.sort((a, b) => a[0] < b[0]);
+    console.log(chartProps);
+    setLoading(false);
+  }, []);
   const data = React.useMemo(
     () => [
       {
-        label: "Progress",
-        data: graphData,
+        data: chartProps,
       },
     ],
     []
@@ -37,11 +35,11 @@ export default function Charts({ propsData }) {
     // space of its parent element automatically
     <div
       style={{
-        width: "35vw",
+        width: "30vw",
         height: "35vh",
       }}
     >
-      <Chart data={data} axes={axes} />
+      {chartProps && !loading && <Chart data={data} axes={axes} />}
     </div>
   );
 }

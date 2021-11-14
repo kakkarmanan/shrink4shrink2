@@ -173,7 +173,7 @@ const Dashboard = (props) => {
 
           <div
             className="col main pt-5 mt-3"
-            style={{ backgroundColor: "#FAF3F3",height:"100vh" }}
+            style={{ backgroundColor: "#FAF3F3", height: "100vh" }}
           >
             <h1 className="display-4 d-none d-sm-block text-dark">
               {u.firstname} {u.lastname}
@@ -246,7 +246,7 @@ const Dashboard = (props) => {
             {sessions && (
               <div className="row mb-3 py-2">
                 <div className="col-xl-6 col-sm-12">
-                  <div className="ses-info" style={{width:"50vh"}}>
+                  <div className="ses-info p-2" style={{ width: "70vh" }}>
                     <Chart propsData={sessions} />
                   </div>
                 </div>
@@ -268,10 +268,10 @@ const Dashboard = (props) => {
               </div>
               <div className="col-xl-6 col-sm-12 py-2">
                 <div className="row ses-info">
-                    <h1>Upcoming Sessions</h1>
-                    <p>{latestSession && latestSession.title}</p>
-                    <p>Date: {latestSession && latestSession.date}</p>
-                    <p> </p>
+                  <h1>Upcoming Sessions</h1>
+                  <p>{latestSession && latestSession.title}</p>
+                  <p>Date: {latestSession && latestSession.date}</p>
+                  <p> </p>
                   {join && (
                     <button
                       onClick={() =>
