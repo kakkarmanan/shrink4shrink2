@@ -11,9 +11,9 @@ const Controls = ({
   client,
   sessionId,
   history,
+  generateReport,
 }) => {
   const [trackState, setTrackState] = useState({ video: true, audio: true });
-  const isDoctor = JSON.parse(localStorage.getItem("user")).doctor;
   const mute = async (type) => {
     if (type === "audio") {
       await tracks[0].setEnabled(!trackState.audio);
@@ -40,6 +40,7 @@ const Controls = ({
   // };
 
   const endSession = async () => {
+    generateReport();
     let data = await fetch(
       `https://shrink4shrink.herokuapp.com/api/close_session`,
       {
@@ -54,7 +55,7 @@ const Controls = ({
       }
     );
     data = await data.json();
-    console.log(data)
+    console.log(data);
     await client.leave();
     client.removeAllListeners();
     // we close the tracks to perform cleanup
@@ -62,7 +63,7 @@ const Controls = ({
     tracks[1].close();
     setStart(false);
     setInCall(false);
-    if (isDoctor) {
+    if (JSON.parse(localStorage.getItem("user")).doctor) {
       history.push(`/doctor-feedback/${sessionId}`);
     } else {
       history.push(`/patient-feedback/${sessionId}`);

@@ -139,6 +139,7 @@ const Video = ({
     } catch (e) {
       console.log(e);
     }
+    console.log(url);
     let response = await fetch(
       "https://shrink4shrink.herokuapp.com/api/add_notes",
       {
@@ -178,6 +179,7 @@ const Video = ({
               client={client}
               sessionId={sessionId}
               history={history}
+              generateReport={generateReport}
             />
           )}
           {users.length > 0 &&
