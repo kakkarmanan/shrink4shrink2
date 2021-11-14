@@ -109,7 +109,9 @@ const Video = ({
           console.log(error);
         });
     };
-    s2t();
+    if (!JSON.parse(localStorage.getItem("user").doctor)) {
+      s2t();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inCall]);
   const generateReport = async () => {
