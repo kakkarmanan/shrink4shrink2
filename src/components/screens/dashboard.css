@@ -7,7 +7,7 @@ html {
  * Off Canvas sidebar at medium breakpoint
  * --------------------------------------------------
  */
-/* @media screen and (max-width: 992px) {
+@media screen and (max-width: 992px) {
 
     .row-offcanvas {
         position: relative;
@@ -31,43 +31,26 @@ html {
         width: 33%;
         height: 100%;
     }
-} */
-
-
-
- @media screen and (max-width: 34em) {
-    .ses-info {
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 2px 5px #ccc;
-    padding: 10px;
-    width: 100%;
-    margin: 16px;
-    float: left;
-  }
-  .ses-info h1 {
-    font-size: 1.1em;
-    margin-bottom: 6px;
-  }
-  .ses-info p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  
-  .ses-info button {
-    position: relative;
-    float: right;
-    margin-right: 10px;
-    color: #f5ba13;
-    border: none;
-    width: 100px;
-    height: 36px;
-    cursor: pointer;
-    outline: none;
-  }
 }
+
+/*
+ * Off Canvas wider at sm breakpoint
+ * --------------------------------------------------
+ */
+/* @media screen and (max-width: 34em) {
+    .row-offcanvas-left .sidebar-offcanvas {
+        left: -45%;
+    }
+
+    .row-offcanvas-left.active {
+        left: 45%;
+        margin-left: -6px;
+    }
+
+    .sidebar-offcanvas {
+        width: 45%;
+    }
+} */
 
 .card {
     overflow: hidden;
@@ -99,7 +82,7 @@ html {
     border-radius: 7px;
     box-shadow: 0 2px 5px #ccc;
     padding: 10px;
-    width: 500px;
+    width: 90%;
     margin: 16px;
     float: left;
   }
@@ -147,16 +130,3 @@ html {
     }
 }
 
-/* .navbar-dark .navbar-toggle-icon{
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
-} */
-
-/* .navbar-toggler-icon{
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
-    vertical-align: middle;
-    content:"";
-    background: no-repeat center center;
-    background-size: 100% 100%;
-} */
