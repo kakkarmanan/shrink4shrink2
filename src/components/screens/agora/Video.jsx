@@ -109,7 +109,9 @@ const Video = ({
           console.log(error);
         });
     };
-    s2t();
+    if (!JSON.parse(localStorage.getItem("user").doctor)) {
+      s2t();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inCall]);
   const generateReport = async () => {
@@ -139,6 +141,7 @@ const Video = ({
     } catch (e) {
       console.log(e);
     }
+    console.log(url);
     let response = await fetch(
       "https://shrink4shrink.herokuapp.com/api/add_notes",
       {
@@ -178,6 +181,7 @@ const Video = ({
               client={client}
               sessionId={sessionId}
               history={history}
+              generateReport={generateReport}
             />
           )}
           {users.length > 0 &&
