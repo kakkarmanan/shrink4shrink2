@@ -18,7 +18,7 @@ const Dashboard = (props) => {
   useEffect(() => {
     const func = async () => {
       let data = await fetch(
-        "https://shrink4shrink.herokuapp.com/api/usersessions",
+        "http://localhost:3001/api/usersessions",
         {
           method: "post",
           headers: {
@@ -67,7 +67,7 @@ const Dashboard = (props) => {
     };
     const func1 = async () => {
       let data1 = await fetch(
-        "https://shrink4shrink.herokuapp.com/api/usersessions",
+        "http://localhost:3001/api/usersessions",
         {
           method: "post",
           headers: {
@@ -272,7 +272,7 @@ const Dashboard = (props) => {
                   <p>{latestSession && latestSession.title}</p>
                   <p>Date: {latestSession && latestSession.date}</p>
                   <p> </p>
-                  {join && (
+                  {(
                     <button
                       onClick={() =>
                         props.history.push(`/call/${latestSession._id}`)

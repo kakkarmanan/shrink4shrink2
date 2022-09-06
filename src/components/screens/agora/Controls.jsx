@@ -42,7 +42,7 @@ const Controls = ({
   const endSession = async () => {
     generateReport();
     let data = await fetch(
-      `https://shrink4shrink.herokuapp.com/api/close_session`,
+      `http://localhost:3001/api/close_session`,
       {
         method: "post",
         headers: {
